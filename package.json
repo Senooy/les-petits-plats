@@ -1,0 +1,22 @@
+{
+  "name": "les-petits-plats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "recipes.js",
+  "scripts": {
+    "sass" : "sass --watch ./sass/style.scss:./public/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Senooy/les-petits-plats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Senooy/les-petits-plats/issues"
+  },
+  "homepage": "https://github.com/Senooy/les-petits-plats#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}
