@@ -6,14 +6,18 @@ class RecipeCard {
     createRecipeCard() {
         const $wrapper = document.createElement('div');
         $wrapper.classList.add('col');
-        //  $wrapper.style = 'width: 23.75rem; height:22.75;';
 
-        let ingredients = "";
+        let ingredient = "";
         this._recipe.ingredients.forEach(el => {
-            ingredients += `
+            ingredient += `
                 <li class="list-group-item"><span class="fw-bold">${el.ingredient} : </span>${el.quantity}</li>
             `
         });
+
+        const ingredients = this._recipe.ingredients.map(el => `
+            <li class="list-group-item"><span class="fw-bold">${el.ingredient} ${el.quantity ? ': ' : ''} </span>${el.quantity}</li>
+        `);
+        const ingredientsHTML = ingredients.join('');
 
         const card = `
             <div class="card" style = "width: 23.75rem; height:22.75;">
@@ -32,7 +36,7 @@ class RecipeCard {
                     <div class="row pt-2">
                         <div class="col-6">
                             <ul class="list-group">
-                                ${ingredients}
+                                ${ingredientsHTML}
                             </ul>
                         </div>
 

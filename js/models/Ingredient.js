@@ -9,9 +9,11 @@ class Ingredient {
         return this._ingredient;
     }
 
-    get quantity() {
-        let unit = !this._unit ? '' : (this._unit === 'grammes' ? 'g' : (this._unit.length > 2 ? ` ${this._unit}` : this._unit)); 
+    get unit() {
+        return !this._unit ? '' : (this._unit === 'grammes' ? 'g' : (this._unit.length > 2 ? ` ${this._unit}` : this._unit)); 
+    }
 
-        return `${this._quantity}${unit}`;
+    get quantity() {
+        return this._quantity ? `${this._quantity}${this.unit}` : '';
     }
 }
