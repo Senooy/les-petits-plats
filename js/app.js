@@ -4,7 +4,11 @@ class App {
     }
 
     main() {
-        console.log(recipes);
+        recipes.map(recipe =>  new Recipe(recipe))
+            .forEach(recipe => {
+                const template = new RecipeCard(recipe);
+                this.$recipesWrapper.appendChild(template.createRecipeCard());
+            });
     }
 }
 
