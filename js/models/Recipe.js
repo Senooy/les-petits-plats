@@ -8,7 +8,7 @@ class Recipe {
         this._time = data.time;
         this._description = data.description;
         this._appliance = data.appliance;
-        this._ustensils = data.ustencils;
+        this._ustensils = data.ustensils;
     }
 
     get id() {

@@ -61,6 +61,8 @@ class RecipeCard {
         const card = `
             <article class="card overflow-hidden" style ="width: 23.75rem; height:45.69rem;">
 
+                <p class="rounded-pill bg-warning p-2 position-absolute top-2 end-5">${this._recipe.time}min</p>
+
                 <img src="public/assets/img/recipes/${this._recipe.image}" class="card-img-top w-100 object-fit-cover" style="height: 15.81rem" alt="...">
 
                     <div class="card-body">
