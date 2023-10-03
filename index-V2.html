@@ -17,25 +17,24 @@
 
 <body>
     <div class="container-fluid">
-        <header style="height: 35em;">
+        <header style="height: 45em;">
             <div class="bg-image h-100" style="background-image: url('public/assets/img/bg-search.png'); ">
                 <img class="p-5" src="public/assets/img/logo.svg" alt="">
 
-                <div class=" container">
-                    <div class="position-absolute bottom-50 start-50 translate-middle">
-                        <h1 class="text-warning text-uppercase text-center pb-4">Cherchez parmi plus de 1500 recettes du
-                            quotidien, simples et délicieuses</h1>
+                <div class="container align-items-center">
+                    <h1 class="text-warning text-uppercase pb-4 text-center">Cherchez parmi plus de 1500 recettes du
+                        quotidien, simples et délicieuses</h1>
 
-                        <form class="pt-4" action="">
-                            <div class="input-group bg-white rounded p-2">
-                                <input class="form-control border-0 rounded shadow-none" type="search" placeholder="Recherche un recette, un ingrédient..." id="principal-search-input">
-                                <span class="input-group-append">
-                                    <button class="btn btn-outline-secondary bg-dark text-light border" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
+                    <!-- search bar -->
+                    <div class="input-group bg-white rounded p-2 mt-4">
+                        <input class="form-control border-0 rounded shadow-none" type="search"
+                            placeholder="Rechercher un recette, un ingrédient..." id="principal-search-input">
+
+                        <span class="input-group-append">
+                            <button class="btn btn-outline-secondary bg-dark text-light border" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
 
 
@@ -46,69 +45,109 @@
         <main class="py-5 bg-light">
             <div class="container">
 
-                <div class="row">
+                <section class="row">
                     <div class="col-2">
                         <div class="dropdown w-100">
-                            <button class="btn btn-secondary w-100" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <button class="btn p-3 btn-secondary w-100 d-flex align-items-center justify-content-between"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Ingrédients
+
+                                <i class="fa-solid fa-chevron-down"></i>
                             </button>
                             <ul class="dropdown-menu">
 
-                                <div class="input-group">
-
-                                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
-                                        placeholder="Username">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">@</div>
+                                <li class="m-2">
+                                    <div class="input-group border rounded-1">
+                                        <input class="form-control border-0 shadow-none" type="search"
+                                            id="ingredient-search-input">
+                                        <span class="input-group-append">
+                                            <button class="btn text-dark" type="button">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
                                     </div>
-                                </div>
-                                <li><input type="text" class="form-control"></li>
-                                <ul class="list-unstyled m-2">
-                                    <li class="list-group-item">Citron</li>
-                                    <li class="list-group-item">Lemon</li>
-                                    <li class="list-group-item">Limone</li>
-                                </ul>
+                                </li>
+
+                                <li class="mt-3">
+                                    <ul class="list-unstyled m-2">
+                                        <li class="list-group-item">Citron</li>
+                                        <li class="list-group-item">Lemon</li>
+                                        <li class="list-group-item">Limone</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="col">
-                        <select name="appliance" id="appliance" class="form-select">
-                            <option value="">Appareils
-                            </option>
+                    <div class="col-2">
+                        <div class="dropdown w-100">
+                            <button class="btn p-3 btn-secondary w-100 d-flex align-items-center justify-content-between"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Appareils
 
-                            <option value="dog">Dog</option>
-                            <option value="cat">Cat</option>
-                            <option value="hamster">Hamster</option>
-                            <option value="parrot">Parrot</option>
-                            <option value="spider">Spider</option>
-                            <option value="goldfish">Goldfish</option>
-                        </select>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+
+                                <li class="m-2">
+                                    <div class="input-group border rounded-1">
+                                        <input class="form-control border-0 shadow-none" type="search"
+                                            id="ingredient-search-input">
+                                        <span class="input-group-append">
+                                            <button class="btn text-dark" type="button">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="mt-3">
+                                    <ul class="list-unstyled m-2">
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="col">
-                        <select name="ustensil" id="ustensil" class="form-select">
-                            <option value="">Ustenciles
-                            </option>
+                    <div class="col-2">
+                        <div class="dropdown w-100">
+                            <button class="btn p-3 btn-secondary w-100 d-flex align-items-center justify-content-between"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ustensiles
 
-                            <option value="dog">Dog</option>
-                            <option value="cat">Cat</option>
-                            <option value="hamster">Hamster</option>
-                            <option value="parrot">Parrot</option>
-                            <option value="spider">Spider</option>
-                            <option value="goldfish">Goldfish</option>
-                        </select>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+
+                                <li class="m-2">
+                                    <div class="input-group border rounded-1">
+                                        <input class="form-control border-0 shadow-none" type="search"
+                                            id="ingredient-search-input">
+                                        <span class="input-group-append">
+                                            <button class="btn text-dark" type="button">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="mt-3">
+                                    <ul class="list-unstyled m-2">
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="col float-end">
-                        <span class="number-recipes">1500</span> recettes
+                    <div class="col text-end fw-bold">
+                        1500 recettes
                     </div>
-                    </section>
+                </section>
 
 
-                    <section id="recipe" class="row row-cols-3">
-                </div>
+                <section id="recipe" class="row row-cols-3">
                 </section>
 
         </main>
