@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="public/css/style.css" />
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/6dd50c170f.js" crossorigin="anonymous"></script>
+
+    <title>Les petits plats</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header style="height: 35em;">
+            <div class="bg-image h-100" style="background-image: url('public/assets/img/bg-search.png'); ">
+                <img class="p-5" src="public/assets/img/logo.svg" alt="">
+
+                <div class=" container">
+                    <div class="position-absolute bottom-50 start-50 translate-middle">
+                        <h1 class="text-warning text-uppercase text-center pb-4">Cherchez parmi plus de 1500 recettes du
+                            quotidien, simples et délicieuses</h1>
+
+                        <form class="pt-4" action="">
+                            <div class="input-group bg-white rounded p-2">
+                                <input class="form-control border-0 rounded shadow-none" type="search" placeholder="Recherche un recette, un ingrédient..." id="principal-search-input">
+                                <span class="input-group-append">
+                                    <button class="btn btn-outline-secondary bg-dark text-light border" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </header>
+
+        <main class="py-5 bg-light">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-2">
+                        <div class="dropdown w-100">
+                            <button class="btn btn-secondary w-100" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Ingrédients
+                            </button>
+                            <ul class="dropdown-menu">
+
+                                <div class="input-group">
+
+                                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                                        placeholder="Username">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">@</div>
+                                    </div>
+                                </div>
+                                <li><input type="text" class="form-control"></li>
+                                <ul class="list-unstyled m-2">
+                                    <li class="list-group-item">Citron</li>
+                                    <li class="list-group-item">Lemon</li>
+                                    <li class="list-group-item">Limone</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <select name="appliance" id="appliance" class="form-select">
+                            <option value="">Appareils
+                            </option>
+
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                            <option value="hamster">Hamster</option>
+                            <option value="parrot">Parrot</option>
+                            <option value="spider">Spider</option>
+                            <option value="goldfish">Goldfish</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <select name="ustensil" id="ustensil" class="form-select">
+                            <option value="">Ustenciles
+                            </option>
+
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                            <option value="hamster">Hamster</option>
+                            <option value="parrot">Parrot</option>
+                            <option value="spider">Spider</option>
+                            <option value="goldfish">Goldfish</option>
+                        </select>
+                    </div>
+
+                    <div class="col float-end">
+                        <span class="number-recipes">1500</span> recettes
+                    </div>
+                    </section>
+
+
+                    <section id="recipe" class="row row-cols-3">
+                </div>
+                </section>
+
+        </main>
+    </div>
+
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <script src="sass/node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
+</body>
+
+</html>
