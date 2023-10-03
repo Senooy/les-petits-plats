@@ -5,7 +5,7 @@ class Ingredient {
         this._unit = data.unit;
     }
 
-    get ingredient() {
+    get name() {
         return this._ingredient;
     }
 
@@ -15,5 +15,9 @@ class Ingredient {
 
     get quantity() {
         return this._quantity ? `${this._quantity}${this.unit}` : '';
+    }
+
+    get hasQuantity() {
+        return this._quantity ? true : false;
     }
 }

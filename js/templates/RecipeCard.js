@@ -14,15 +14,15 @@ class RecipeCard {
             `
         });
 
-        const ingredients = this._recipe.ingredients.map(el => `
-            <li class="list-group-item"><span class="fw-bold">${el.ingredient} ${el.quantity ? ': ' : ''} </span>${el.quantity}</li>
+        const ingredients = this._recipe.ingredients.map(ingredient => `
+            <li class="list-group-item"><span class="fw-bold">${ingredient.name} ${ingredient.hasQuantity ? ': ' : ''} </span>${ingredient.quantity}</li>
         `);
         const ingredientsHTML = ingredients.join('');
 
         const card = `
             <div class="card" style = "width: 23.75rem; height:22.75;">
                 <!-- photo plat -->
-                <div style="height: 11.12rem; background: #C7BEBE;"></div>
+                <img src="public/assets/img/${this._recipe.image}" class="card-img-top" alt="...">
 
                 <div class="card-body" style="background-color: E7E7E7;">
                     <div class="row py-2">
@@ -41,7 +41,7 @@ class RecipeCard {
                         </div>
 
                         <div class="col-6">
-                                <p>${this._recipe.description}</p>
+                                <p class="justify-content-start">${this._recipe.description}</p>
                         </div>
                     </div>
                 </div>
