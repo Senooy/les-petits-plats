@@ -7,7 +7,7 @@ class App {
         recipes.map(recipe =>  new Recipe(recipe))
             .forEach(recipe => {
                 const template = new RecipeCard(recipe);
-                this.$recipesWrapper.appendChild(template.createRecipeCard());
+                this.$recipesWrapper.appendChild(template.createRecipeCardV2());
             });
     }
 }
