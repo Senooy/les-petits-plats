@@ -9,7 +9,7 @@ class App {
   }
 
   main() {
-    // contains ALL recipes with their id for keys
+    // contains ALL the recipes with their id for keys
     const recipes = new Map()
     
     recipesData.forEach((recipe) => {
@@ -17,7 +17,7 @@ class App {
       recipes.set(recipeInstance.id, recipeInstance);
     });
 
-    // contains 3 maps for each tag, each map has a pair value possible with an ids array of the recipes concerned
+    // Generates 3 index for each filter category.
     const recipesIndex = new RecipesIndex(recipes);
 
     recipes.forEach(recipe => {
@@ -39,7 +39,7 @@ class App {
     createListItems(this.ustensilList, recipesIndex.ustensils);
 
   
-    this.$wrapperRecipesCount.innerHTML = `${recipes.length} ${recipes.length > 1 ? 'recettes' : 'recette'}`
+    this.$wrapperRecipesCount.innerHTML = `${recipes.size} ${recipes.size > 1 ? 'recettes' : 'recette'}`
 
     console.log(recipesIndex);
 

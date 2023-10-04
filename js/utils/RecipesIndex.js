@@ -1,5 +1,7 @@
 class RecipesIndex {
     constructor(recipes) {
+    // Each map contains all the available values as keys, 
+    // and the corresponding value is an array of recipe IDs that are associated with that value
         this._ingredients = {}
         this._appliances = {}
         this._ustensils = {}

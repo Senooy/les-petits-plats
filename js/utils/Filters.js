@@ -5,8 +5,21 @@ class Filters {
         this._ustensilsList = document.querySelector(`#${idUstensilsList}`)
     }
 
-    update() {
-        
+    update(ingredientsList, appliancesList, ustensilesList) {
+        // clean the lists
+        this._ingredientsList.innerHTML = "";
+        this._appliancesList.innerHTML = ""
+        this._ustensilsList.innerHTML = ""
+
+        // new filters lists
+        const ingredientsFilter = new FilterList(this._ingredientsList, ingredientsList)
+        ingredientsFilter.createFilterListItem();
+
+        const applianceFilter = new FilterList(this._appliancesList, appliancesList)
+        applianceFilter.createFilterListItem()
+
+        const ustensilsFilter = new FilterList(this._ustensilsList, ustensilesList)
+        ustensilsFilter.createFilterListItem()
     }
 }
 

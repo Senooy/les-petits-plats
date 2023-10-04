@@ -10,7 +10,7 @@ class FilterList {
             $wrapper.classList.add('list-group-item');
             $wrapper.innerText = this._data[item].original;
             this._$wrapper.appendChild($wrapper);
-          }
+        }
     }
 }
 
