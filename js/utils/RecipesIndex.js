@@ -11,31 +11,26 @@ class RecipesIndex {
 
     _init(recipes) {
         const addRef = (id, array, ref) => {
-            const normalizeRef = ref.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            const capitalizeRef = ref[0].toUpperCase() + ref.slice(1).toLowerCase()
 
-            if (!array[normalizeRef]) {
-                array[normalizeRef] = {
-                    original: capitalizeRef,
-                    ids: []
-                }
+            if (!array[ref]) {
+                array[ref] = []
             }
-            array[normalizeRef].ids.push(id)
+            array[ref].push(id)
         }
 
         recipes.forEach(recipe => {
             const idRecipe = recipe.id;
 
-            // ingredient Index
+            // ingredients Index
             recipe.ingredients.forEach(ingredient => {
-                addRef(idRecipe, this._ingredients, ingredient.name)
+                addRef(idRecipe, this._ingredients, ingredient.normalizeName)
             });
 
-            // appliance Index
-            addRef(idRecipe, this._appliances, recipe.appliance)
+            // appliances Index
+            addRef(idRecipe, this._appliances, recipe.normalizeAppliance)
 
             // ustensils Index
-            recipe.ustensils.forEach(ustensil => {
+            recipe.normalizeUstensils.forEach(ustensil => {
                 addRef(idRecipe, this._ustensils, ustensil)
             });
         });

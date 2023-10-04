@@ -2,6 +2,7 @@ class App {
   constructor() {
     this.$wrapperRecipes = document.querySelector("#recipes");
     this.$wrapperRecipesCount = document.querySelector('#displayRecipesCount')
+    this._filtersListId = ['ingredients', 'appliances', 'ustensils']
   }
 
   main() {
@@ -14,16 +15,16 @@ class App {
     });
 
     // display ALL the recipes 
-    const filters = new Filters('ingredients', 'appliances', 'ustensils')
+    const filters = new Filters(this._filtersListId, 'tags')
 
-    const displayRecipe = new DisplayRecipes(this.$wrapperRecipes, recipes, this.$wrapperRecipesCount, filters)
-    displayRecipe.renderAll()
+    const displayRecipe = new DisplayRecipes(this.$wrapperRecipes, this.$wrapperRecipesCount, filters)
+    displayRecipe.render(recipes)
 
     // Generates 3 index for each filter category.
     const recipesIndex = new RecipesIndex(recipes);
 
     // Search system
-    const searchRecipes = new SearchRecipes(displayRecipe, recipesIndex)
+    const searchRecipes = new SearchRecipes(displayRecipe, recipesIndex, recipes)
     searchRecipes.setupSearchInput()
 
     console.log(`app, recipeIndex : `);

@@ -1,5 +1,6 @@
-class Recipe {
+class Recipe extends StringUtils{
     constructor(data) {
+        super()
         this._id = data.id;
         this._image = data.image;
         this._name = data.name;
@@ -23,6 +24,10 @@ class Recipe {
         return this._name;
     }
 
+    get normalizeName() {
+        return this.normalizeString(this.name)
+    }
+
     get servings() {
         return this._servings;
     }
@@ -39,8 +44,20 @@ class Recipe {
         return this._description;
     }
 
+    get normalizeDescription() {
+        return this.normalizeString(this.description)
+    }
+
     get appliance() {
         return this._appliance;
+    }
+
+    get normalizeAppliance() {
+        return this.normalizeString(this.appliance)
+    }
+
+    get capitalizeAppliance() {
+        return this.capitalizeString(this.appliance)
     }
 
     get ustensils() {
@@ -50,10 +67,20 @@ class Recipe {
     get normalizeUstensils() {
         const normalizeUstensils = []
         
-        this._ustensils.array.forEach(ustensil => {
-            normalizeUstensils.push(ustensil.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+        this.ustensils.forEach(ustensil => {
+            normalizeUstensils.push(this.normalizeString(ustensil))
         });
 
         return normalizeUstensils;
+    }
+
+    get capitalizeUstensils() {
+        const capitalizeUstensils = []
+        
+        this._ustensils.forEach(ustensil => {
+            capitalizeUstensils.push(this.capitalizeString(ustensil))
+        });
+
+        return capitalizeUstensils;
     }
 }

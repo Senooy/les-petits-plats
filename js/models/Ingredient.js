@@ -1,5 +1,6 @@
-class Ingredient {
+class Ingredient extends StringUtils {
     constructor(data) {
+        super()
         this._ingredient = data.ingredient;
         this._quantity = data.quantity;
         this._unit = data.unit;
@@ -10,11 +11,11 @@ class Ingredient {
     }
 
     get normalizeName() {
-        return this._ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return this.normalizeString(this.name)
     }
 
     get capitalizeName() {
-        return this._ingredient[0].toUpperCase() + this._ingredient.slice(1).toLowerCase()
+        return this.capitalizeString(this.name)
     }
 
     get unit() {

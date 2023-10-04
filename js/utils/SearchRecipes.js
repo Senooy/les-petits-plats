@@ -1,8 +1,10 @@
-class SearchRecipes {
-  constructor(displayRecipe, recipesIndex) {
+class SearchRecipes extends StringUtils {
+  constructor(displayRecipe, recipesIndex, recipes) {
+    super()
     this._displayRecipe = displayRecipe;
-    this._recipes = Array.from(this._displayRecipe.recipes.values());
-    this._recipesIndex = recipesIndex;
+    this._allRecipes = recipes;
+    this._currentRecipesIndex = recipesIndex;
+    this._currentRecipes = [...this._allRecipes.values()];
   }
 
   setupSearchInput() {
@@ -12,44 +14,47 @@ class SearchRecipes {
       const searchValue = searchInput.value.trim();
       
       if (searchValue.length >= 3) {
-       this._displayRecipe.renderFiltered( this._mainSearch(searchValue))
+      let filteredRecipesID = this._mainSearch(searchValue)
+       this._currentRecipes = this._getRecipesFromId(filteredRecipesID)
+       this._displayRecipe.render(this._currentRecipes)
       }
 
       if (searchValue == "") {
-        this._displayRecipe.renderAll()
-      }
+       this._currentRecipes = [...this._allRecipes.values()]
+       this._displayRecipe.render(this._currentRecipes)
+      }      
     });
   }
 
   _mainSearch(searchTerm) {
-    const filteredRecipes = this._recipes.filter((recipe) => {
-      const normalizedSearch = this._toNormalize(searchTerm);
-
-      if (
-        this._toNormalize(recipe.name).includes(normalizedSearch) ||
-        this._toNormalize(recipe.description).includes(normalizedSearch)
-      ) {
-        return true;
+    const filteredRecipes = this._currentRecipes.filter((recipe) => {
+        const normalizedSearch = this.normalizeString(searchTerm);
+        if (
+          recipe.normalizeName.includes(normalizedSearch) ||
+          recipe.normalizeDescription.includes(normalizedSearch)
+        ) {
+          return true;
+        }
+  
+        return recipe.ingredients.some((ingredient) =>
+          ingredient.normalizeName.includes(normalizedSearch)
+        );
       }
-
-      return recipe.ingredients.some((ingredient) =>
-        this._toNormalize(ingredient.name).includes(normalizedSearch)
-      );
-    });
+    );
 
     return filteredRecipes.map((recipe) => recipe.id);
   }
 
   filterSeach(tag, searchTerm) {
-    return this._recipesIndex.get(tag[this._toNormalize(searchTerm)]);
+    return this._currentRecipesIndex.get(tag[this.normalizeString(searchTerm)]);
+  }
+
+  _getRecipesFromId(arrayRecipesId) {
+    return arrayRecipesId.map((id) => this._allRecipes.get(id));
   }
 
   tagSearch() {
     // search IN the list for the filter to apply !!
-  }
-
-  _toNormalize(str) {
-    return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
 }
 
@@ -58,7 +63,7 @@ class SearchRecipes {
   //     const filtredIdRecipes = []
   //     const normalizeSearch = this._toNormalize(searchTerm)
 
-  //     this._recipes.forEach(recipe => {
+  //     this._currentRecipes.forEach(recipe => {
 
   //         if (this._toNormalize(recipe.name).includes(normalizeSearch) || this._toNormalize(recipe.description).includes(normalizeSearch)) {
   //             filtredIdRecipes.push(recipe.id)

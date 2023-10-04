@@ -1,38 +1,27 @@
 class Filters {
-    constructor(idIngredientsList, idAppliancesList, idUstensilsList) {
-        this._ingredientsList = document.querySelector(`#${idIngredientsList}`)
-        this._appliancesList = document.querySelector(`#${idAppliancesList}`)
-        this._ustensilsList = document.querySelector(`#${idUstensilsList}`)
+    constructor(filtersListId, wrapperTagsId) {
+        this._filtersListId = filtersListId
+        this._$wrapperFiltersList = this._getWrappers()
+        this._$wrapperTags = document.querySelector(`#${wrapperTagsId}`)
 
-        this._filterList = new FilterListTemplate()
+        console.log(this._$wrapperFiltersList);
     }
 
-    update(ingredientsList, appliancesList, ustensilesList) {
-        // clean the lists
-        this._ingredientsList.innerHTML = "";
-        this._appliancesList.innerHTML = ""
-        this._ustensilsList.innerHTML = ""
-
-        // new filters lists
-       this._filterList.render(this._ingredientsList, ingredientsList)
-       this._filterList.render(this._appliancesList, appliancesList)
-        this._filterList.render(this._ustensilsList, ustensilesList)
-    }
-}
-
-class Tag {
-    constructor(idTagWrapper, tag) {
-        this._$wrapperTags = document.querySelector(`#${idTagWrapper}`);
-        this._tag = tag;
+    _getWrappers() {
+        return this._filtersListId.map(id => document.querySelector(`#${id}`));
     }
 
-    addTag() {
-       const tag = new TagCard(this._tag);
-       const template = tag.createTagCard();
-        this._$wrapperTags.appendChild(template);
-    }
+    update(filtersData) {
+        this._$wrapperFiltersList.forEach($wrapperFilter => {
+            $wrapperFilter.innerHTML = ""
+            const key = $wrapperFilter.id
 
-    removeTag() {
-        
+            filtersData[key].forEach(item => {
+                const filterTemplate = new FilterTemplate(item)
+                const template = filterTemplate.createItem()
+
+                $wrapperFilter.appendChild(template)
+            })
+        });
     }
 }
