@@ -21,7 +21,7 @@ class RecipesIndex {
             array[normalizeRef].ids.push(id)
         }
 
-        for (const recipe of recipes) {
+        recipes.forEach(recipe => {
             const idRecipe = recipe.id;
 
             // ingredient Index
@@ -36,7 +36,7 @@ class RecipesIndex {
             recipe.ustensils.forEach(ustensil => {
                 addRef(idRecipe, this._ustensils, ustensil)
             });
-        }
+        });
     }
 
     get ingredients() {

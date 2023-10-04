@@ -9,7 +9,13 @@ class App {
   }
 
   main() {
-    const recipes = recipesData.map(recipe => new Recipe(recipe));
+    const recipes = new Map()
+    
+    recipesData.forEach((recipe) => {
+      const recipeInstance = new Recipe(recipe);
+      recipes.set(recipeInstance.id, recipeInstance);
+    });
+
     const recipesIndex = new RecipesIndex(recipes);
 
     recipes.forEach(recipe => {
