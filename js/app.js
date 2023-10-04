@@ -3,12 +3,13 @@ class App {
     this.$wrapperRecipes = document.querySelector("#recipes");
     this.$wrapperRecipesCount = document.querySelector('#displayRecipesCount')
     
-    this.ingredientList = document.querySelector('#ingredient')
-    this.applianceList = document.querySelector('#appliance')
-    this.ustensilList = document.querySelector('#ustensil')
+    this.ingredientList = document.querySelector('#ingredients')
+    this.applianceList = document.querySelector('#appliances')
+    this.ustensilList = document.querySelector('#ustensils')
   }
 
   main() {
+    // contains ALL recipes with their id for keys
     const recipes = new Map()
     
     recipesData.forEach((recipe) => {
@@ -16,6 +17,7 @@ class App {
       recipes.set(recipeInstance.id, recipeInstance);
     });
 
+    // contains 3 maps for each tag, each map has a pair value possible with an ids array of the recipes concerned
     const recipesIndex = new RecipesIndex(recipes);
 
     recipes.forEach(recipe => {

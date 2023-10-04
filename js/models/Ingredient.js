@@ -9,6 +9,10 @@ class Ingredient {
         return this._ingredient;
     }
 
+    get normalizeName() {
+        return this._ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
     get unit() {
         return !this._unit ? '' : (this._unit === 'grammes' ? 'g' : (this._unit.length > 2 ? ` ${this._unit}` : this._unit)); 
     }

@@ -46,4 +46,14 @@ class Recipe {
     get ustensils() {
         return this._ustensils;
     }
+
+    get normalizeUstensils() {
+        const normalizeUstensils = []
+        
+        this._ustensils.array.forEach(ustensil => {
+            normalizeUstensils.push(ustensil.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+        });
+
+        return normalizeUstensils;
+    }
 }
