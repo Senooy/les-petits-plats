@@ -1,6 +1,11 @@
 class App {
   constructor() {
-    this.$recipesWrapper = document.querySelector("#recipes");
+    this.$wrapperRecipes = document.querySelector("#recipes");
+    this.$wrapperRecipesCount = document.querySelector('#displayRecipesCount')
+    
+    this.ingredientList = document.querySelector('#ingredient')
+    this.applianceList = document.querySelector('#appliance')
+    this.ustensilList = document.querySelector('#ustensil')
   }
 
   main() {
@@ -9,8 +14,24 @@ class App {
 
     recipes.forEach(recipe => {
       const template = new RecipeCard(recipe);
-      this.$recipesWrapper.appendChild(template.createRecipeCardV2());
+      this.$wrapperRecipes.appendChild(template.createRecipeCardV2());
     });
+
+    const createListItems = (container, data) => {
+      for (const item in data) {
+        const $wrapper = document.createElement('li');
+        $wrapper.classList.add('list-group-item');
+        $wrapper.innerText = data[item].original;
+        container.appendChild($wrapper);
+      }
+    }
+    
+    createListItems(this.ingredientList, recipesIndex.ingredients);
+    createListItems(this.applianceList, recipesIndex.appliances);
+    createListItems(this.ustensilList, recipesIndex.ustensils);
+
+  
+    this.$wrapperRecipesCount.innerHTML = `${recipes.length} ${recipes.length > 1 ? 'recettes' : 'recette'}`
 
     console.log(recipesIndex);
 
@@ -25,3 +46,4 @@ class App {
 const app = new App();
 
 app.main();
+

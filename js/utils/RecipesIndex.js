@@ -10,10 +10,11 @@ class RecipesIndex {
     _init(recipes) {
         const addRef = (id, array, ref) => {
             const normalizeRef = ref.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const capitalizeRef = ref[0].toUpperCase() + ref.slice(1).toLowerCase()
 
             if (!array[normalizeRef]) {
                 array[normalizeRef] = {
-                    original: ref,
+                    original: capitalizeRef,
                     ids: []
                 }
             }
@@ -30,7 +31,6 @@ class RecipesIndex {
 
             // appliance Index
             addRef(idRecipe, this._appliances, recipe.appliance)
-
 
             // ustensils Index
             recipe.ustensils.forEach(ustensil => {

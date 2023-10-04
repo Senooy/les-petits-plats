@@ -19,13 +19,15 @@
     <div class="container-fluid">
         <header style="height: 45em;">
             <div class="bg-image h-100" style="background-image: url('public/assets/img/bg-search.png'); ">
+                <!-- Logo -->
                 <img class="p-5" src="public/assets/img/logo.svg" alt="">
 
-                <div class="container align-items-center">
+                <div class="container ">
+                    <!-- Title -->
                     <h1 class="text-warning text-uppercase pb-4 text-center">Cherchez parmi plus de 1500 recettes du
                         quotidien, simples et délicieuses</h1>
 
-                    <!-- search bar -->
+                    <!-- Search Bar -->
                     <div class="input-group bg-white rounded p-2 mt-4">
                         <input class="form-control border-0 rounded shadow-none" type="search"
                             placeholder="Rechercher un recette, un ingrédient..." id="principal-search-input">
@@ -46,6 +48,7 @@
             <div class="container">
 
                 <section class="row">
+                    <!-- Ingredients List -->
                     <div class="col-2">
                         <div class="dropdown w-100">
                             <button
@@ -56,7 +59,7 @@
                                 <i class="fa-solid fa-chevron-down"></i>
                             </button>
                             <ul class="dropdown-menu">
-
+                                <!-- Search Bar -->
                                 <li class="m-2">
                                     <div class="input-group border rounded-1">
                                         <input class="form-control border-0 shadow-none" type="search"
@@ -70,16 +73,15 @@
                                 </li>
 
                                 <li class="mt-3">
-                                    <ul class="list-unstyled m-2 overflow-y-auto">
-                                        <li class="list-group-item">Citron</li>
-                                        <li class="list-group-item">Lemon</li>
-                                        <li class="list-group-item">Limone</li>
+                                    <ul id="ingredient" class="list-unstyled m-2 mb-0 overflow-auto" style="max-height: 19.69em">
+                                        <!-- The ingredients used in the displayed recipes will be listed here -->
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
+                    <!-- Appliances List -->
                     <div class="col-2">
                         <div class="dropdown w-100">
                             <button
@@ -90,7 +92,7 @@
                                 <i class="fa-solid fa-chevron-down"></i>
                             </button>
                             <ul class="dropdown-menu">
-
+                                <!-- Search Bar -->
                                 <li class="m-2">
                                     <div class="input-group border rounded-1">
                                         <input class="form-control border-0 shadow-none" type="search"
@@ -104,14 +106,15 @@
                                 </li>
 
                                 <li class="mt-3">
-                                    <ul class="list-unstyled m-2">
-
+                                    <ul id="appliance" class="list-unstyled m-2  mb-0 overflow-auto" style="max-height: 19.69em">
+                                        <!-- The appliance used in the displayed recipes will be listed here -->
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
+                    <!-- Ustensils List -->
                     <div class="col-2">
                         <div class="dropdown w-100">
                             <button
@@ -122,7 +125,7 @@
                                 <i class="fa-solid fa-chevron-down"></i>
                             </button>
                             <ul class="dropdown-menu">
-
+                                <!-- Search Bar -->
                                 <li class="m-2">
                                     <div class="input-group border rounded-1">
                                         <input class="form-control border-0 shadow-none" type="search"
@@ -136,20 +139,25 @@
                                 </li>
 
                                 <li class="mt-3">
-                                    <ul class="list-unstyled m-2">
-
+                                    <ul id="ustensil" class="list-unstyled m-2 mb-0 overflow-auto" style="max-height: 19.69em">
+                                        <!-- The ustensils used in the displayed recipes will be listed here -->
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="col text-end fw-bold">
-                        1500 recettes
+
+                    <div id="displayRecipesCount" class="col text-end fw-bold"></div>
+                </section>
+
+                <section id="tag" class="row row-cols-6">
+                    <div class="col">
+                        
                     </div>
                 </section>
 
-
+                <!-- Display Recipes -->
                 <section id="recipes" class="row row-cols-3 mt-5 g-4">
                 </section>
 
