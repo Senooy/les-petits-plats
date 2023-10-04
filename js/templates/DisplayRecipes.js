@@ -12,4 +12,8 @@ class DisplayRecipes {
           });
       
     }
+
+    _updateFilter() {
+
+    }
 }
