@@ -30,7 +30,7 @@
                     <!-- Search Bar -->
                     <div class="input-group bg-white rounded p-2 mt-4">
                         <input class="form-control border-0 rounded shadow-none" type="search"
-                            placeholder="Rechercher un recette, un ingrédient..." id="principal-search-input">
+                            placeholder="Rechercher un recette, un ingrédient..." id="main-search" name="q">
 
                         <span class="input-group-append">
                             <button class="btn btn-outline-secondary bg-dark text-light border" type="button">
@@ -159,7 +159,6 @@
                         <div class="card">
                             <div class="card-body btn btn-warning d-flex align-items-center justify-content-between" style="height: 3.13rem;">
                                 Crème fraîche
-
                                 <button type="button" class="btn-close" disabled aria-label="Close"></button>
                             </div>
                         </div>
@@ -180,11 +179,14 @@
     <script src="js/models/Ingredient.js"></script>
     <script src="js/models/Recipe.js"></script>
 
+     <!-- Templates -->
+     <script src="js/templates/RecipeCard.js"></script>
+     <script src="js/templates/DisplayRecipes.js"></script>
+
     <!-- Utils -->
     <script src="js/utils/RecipesIndex.js"></script>
-
-    <!-- Templates -->
-    <script src="js/templates/RecipeCard.js"></script>
+    <script src="js/utils/SearchRecipes.js"></script>
+   
 
     <!-- Entries -->
     <script src="./js/app.js"></script>

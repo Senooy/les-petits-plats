@@ -17,14 +17,15 @@ class App {
       recipes.set(recipeInstance.id, recipeInstance);
     });
 
+    // display ALL the recipes 
+    const displayRecipe = new DisplayRecipes(this.$wrapperRecipes, recipes)
+    displayRecipe.renderAll()
+
     // Generates 3 index for each filter category.
     const recipesIndex = new RecipesIndex(recipes);
+    
 
-    recipes.forEach(recipe => {
-      const template = new RecipeCard(recipe);
-      this.$wrapperRecipes.appendChild(template.createRecipeCardV2());
-    });
-
+    // liste déroulante avec RecipesIndex
     const createListItems = (container, data) => {
       for (const item in data) {
         const $wrapper = document.createElement('li');
@@ -38,14 +39,21 @@ class App {
     createListItems(this.applianceList, recipesIndex.appliances);
     createListItems(this.ustensilList, recipesIndex.ustensils);
 
+    
+    // Search system
+    const searchRecipes = new SearchRecipes(displayRecipe, recipesIndex)
+    searchRecipes.setupSearchInput()
+    
   
+    // how many recipes return ? (count from recipes)
     this.$wrapperRecipesCount.innerHTML = `${recipes.size} ${recipes.size > 1 ? 'recettes' : 'recette'}`
 
-    console.log(recipesIndex);
+    console.log(`app : `);
+    console.log(`recipeIndex : ${recipesIndex}`);
 
-    console.log(recipesIndex.ingredients['citron']);
-    console.log(recipesIndex.ustensils['couteau']);
-    console.log(recipesIndex.appliances['four']);
+    console.log(`array ingredients citron : ${recipesIndex.ingredients['citron']}`);
+    console.log(`array ustensils couteau : ${recipesIndex.ustensils['couteau']}`);
+    console.log(`array appliances four : ${recipesIndex.appliances['four']}`);
 
     console.log(""); 
   }
