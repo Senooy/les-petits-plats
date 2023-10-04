@@ -1,15 +1,11 @@
-class FilterList {
-    constructor($wrapper, data) {
-        this._$wrapper = $wrapper
-        this._data = data
-    }
-
-    createFilterListItem() {
-        for (const item in this._data) {
+class FilterListTemplate {
+    render($wrapperList, data) {
+        for (const item in data) {
             const $wrapper = document.createElement('li');
             $wrapper.classList.add('list-group-item');
-            $wrapper.innerText = this._data[item].original;
-            this._$wrapper.appendChild($wrapper);
+            $wrapper.innerText = data[item];
+
+            $wrapperList.appendChild($wrapper);
         }
     }
 }

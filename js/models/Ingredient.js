@@ -13,6 +13,10 @@ class Ingredient {
         return this._ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
 
+    get capitalizeName() {
+        return this._ingredient[0].toUpperCase() + this._ingredient.slice(1).toLowerCase()
+    }
+
     get unit() {
         return !this._unit ? '' : (this._unit === 'grammes' ? 'g' : (this._unit.length > 2 ? ` ${this._unit}` : this._unit)); 
     }

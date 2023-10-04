@@ -3,6 +3,8 @@ class Filters {
         this._ingredientsList = document.querySelector(`#${idIngredientsList}`)
         this._appliancesList = document.querySelector(`#${idAppliancesList}`)
         this._ustensilsList = document.querySelector(`#${idUstensilsList}`)
+
+        this._filterList = new FilterListTemplate()
     }
 
     update(ingredientsList, appliancesList, ustensilesList) {
@@ -12,14 +14,9 @@ class Filters {
         this._ustensilsList.innerHTML = ""
 
         // new filters lists
-        const ingredientsFilter = new FilterList(this._ingredientsList, ingredientsList)
-        ingredientsFilter.createFilterListItem();
-
-        const applianceFilter = new FilterList(this._appliancesList, appliancesList)
-        applianceFilter.createFilterListItem()
-
-        const ustensilsFilter = new FilterList(this._ustensilsList, ustensilesList)
-        ustensilsFilter.createFilterListItem()
+       this._filterList.render(this._ingredientsList, ingredientsList)
+       this._filterList.render(this._appliancesList, appliancesList)
+        this._filterList.render(this._ustensilsList, ustensilesList)
     }
 }
 

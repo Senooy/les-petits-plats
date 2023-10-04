@@ -9,12 +9,14 @@ class SearchRecipes {
     const searchInput = document.querySelector('input[name="q"]');
 
     searchInput.addEventListener('input', () => {
-      const searchValue = searchInput.value.trim(); // Récupérer la valeur saisie et supprimer les espaces avant et après
+      const searchValue = searchInput.value.trim();
+      
       if (searchValue.length >= 3) {
-       const filteredRecipes =  this._mainSearch(searchValue)
+       this._displayRecipe.renderFiltered( this._mainSearch(searchValue))
+      }
 
-       console.log(filteredRecipes);
-       this._displayRecipe.renderFiltered(filteredRecipes)
+      if (searchValue == "") {
+        this._displayRecipe.renderAll()
       }
     });
   }
