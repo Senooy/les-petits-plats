@@ -44,7 +44,7 @@ class DisplayRecipes {
       throw new Error(`recipes must be a map or an array`)
     }
 
-    this._$wrapperRecipesCount.innerHTML = `${recipesCount} ${recipesCount > 1 ? "recettes" : "recette"}`;
+    this._$wrapperRecipesCount.innerHTML = `${recipesCount < 10 ? `0${recipesCount}` : `${recipesCount}`} ${recipesCount > 0 ? "recettes" : "recette"}`;
   }
 
   _initializeFilters() {

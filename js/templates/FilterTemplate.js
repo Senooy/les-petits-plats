@@ -18,7 +18,7 @@ class FilterTemplate {
 
         $wrapper.innerHTML = `
             <div class="card">
-                <div class="card-body btn btn-warning d-flex align-items-center justify-content-between" style="height: 3.13rem;">
+                <div class="card-body btn btn-primary d-flex align-items-center justify-content-between" style="height: 3.13rem;">
                     ${this._data}            
                     <button type="button" class="btn-close" aria-label="Close"></button>
                 </div>
