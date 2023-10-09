@@ -1,19 +1,15 @@
 class Filters extends StringUtils {
-    constructor(filtersListId, wrapperTagsId, searchRecipes) {
+    constructor($wrapperFiltersList, wrapperTagsId, searchRecipes) {
         super();
-        this._filtersListId = filtersListId;
-        this._$wrapperFiltersList = this._getWrappers();
+        this._$wrapperFiltersList = $wrapperFiltersList
         this._$wrapperTags = document.querySelector(`#${wrapperTagsId}`);
         this._searchRecipes = searchRecipes;
     }
 
-    _getWrappers() {
-        return this._filtersListId.map(id => document.querySelector(`#${id}`));
-    }
 
     update(filtersData) {
         this._$wrapperFiltersList.forEach($wrapperFilter => {
-            const filterType = $wrapperFilter.id;
+            const filterType = $wrapperFilter.id.split("-").shift();
 
             this._clearFilterAndReset(filtersData[filterType], $wrapperFilter, filterType)
             this._clearInput($wrapperFilter)
@@ -56,7 +52,7 @@ class Filters extends StringUtils {
         filterData.forEach(filter => {
             const filterTemplate = new FilterTemplate(filterType, filter);
 
-            const template = filterTemplate.createFilter();
+            const template = filterTemplate.createFilterV1();
             template.addEventListener('click', () => this._handleFilterClick(filterTemplate, template));
 
             $wrapperFilter.appendChild(template);

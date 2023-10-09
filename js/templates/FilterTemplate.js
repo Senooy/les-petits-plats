@@ -1,7 +1,7 @@
 class FilterTemplate {
     constructor(filterType, data) {
         this._filterType = filterType
-        this._data =  data
+        this._data = data
     }
 
     createFilter() {
@@ -12,8 +12,15 @@ class FilterTemplate {
         $wrapper.innerText = this._data;
 
         return $wrapper
-        }
-    
+    }
+
+    createFilterV1() {
+        const $wrapper = document.createElement('p')
+        $wrapper.innerText = this._data
+        
+        return $wrapper;
+    }
+
     createTagCard() {
         const $wrapper = document.createElement('div')
         $wrapper.classList.add('col')
@@ -29,7 +36,7 @@ class FilterTemplate {
         return $wrapper;
     }
 
-    get filterType () {
+    get filterType() {
         return this._filterType
     }
 

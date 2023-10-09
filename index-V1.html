@@ -51,30 +51,55 @@
             <!-- Filters -->
             <div>
                 <div class="row row-cols-6 my-5">
-                    <div class="" id="ingredients">
+                    <div id="ingredients-filter">
                         <button class="btn btn-ingredient-V1 text-white p-3">Ingrédients</button>
-                    </div>
 
-                    <div class="" id="appliances">
-                        <button class="btn btn-appliance-V1 text-white p-3">Appareils</button>
-                    </div>
-
-                    <!-- Code HTML open dropdown -->
-                    <div class="col-6 text-white">
-                        <div class="bg-appliance-V1 rounded-2 px-3" id="dropdown">
+                        <!-- dropdown open -->
+                        <div id="ingredients-wrapper" class="bg-ingredient-V1 rounded-2 px-3 text-white d-none">
                             <div class="input-group py-2">
                                 <input
                                     class="form-control ps-0 border-0 bg-transparent shadow-none color-place-holder-white"
-                                    type="search" id="ingredients-search-input" placeholder="Rechercher un appareil">
+                                    type="search" id="ingredients-search-input" placeholder="Rechercher un ingrédient">
                                 <span class="input-group-append">
                                     <button class="btn text-dark pe-0" type="button">
                                         <i class="fa fa-chevron-up text-white"></i>
                                     </button>
                                 </span>
                             </div>
-    
+
                             <div class="border-0 bg-transparent w-100">
-                                <div class="row row-cols-3 w-100 align-items-center">
+                                <div id="ingredients" class="row row-cols-3 w-100 align-items-center">
+                                    <p>Action</p>
+                                    <p>Another action</p>
+                                    <p>Something else here</p>
+                                    <p>Another action</p>
+                                    <p>Another action</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div id="appliances-filter">
+                        <button class="btn btn-appliance-V1 text-white p-3">Appareils</button>
+
+                        <!-- dropdown open -->
+                        <div id="appliances-wrapper" class="bg-appliance-V1 rounded-2 px-3 text-white d-none">
+                            <div class="input-group py-2">
+                                <input
+                                    class="form-control ps-0 border-0 bg-transparent shadow-none color-place-holder-white"
+                                    type="search" id="ingredients-search-input" placeholder="Rechercher un appareil">
+                                <span class="input-group-append">
+                                    <button class="btn text-white pe-0" type="button">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </button>
+                                </span>
+                            </div>
+
+                            <div class="border-0 bg-transparent w-100">
+                                <div id="appliances" class="row row-cols-3 w-100 align-items-center">
                                     <p class="col">Action</p>
                                     <p class="col">Another action</p>
                                     <p class="col">Something else here</p>
@@ -83,14 +108,37 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                     <!-- /////////////// -->
 
 
 
-                    <div class="" id="ustensils">
+                    <div id="ustensils-filter">
                         <button class="btn btn-ustensil-V1 text-white p-3">Ustensiles</button>
+
+                        <!-- dropdown open -->
+                        <div id="ustensils-wrapper" class="bg-ustensil-V1 rounded-2 px-3 text-white d-none">
+                            <div class="input-group py-2">
+                                <input
+                                    class="form-control ps-0 border-0 bg-transparent shadow-none color-place-holder-white"
+                                    type="search" id="ingredients-search-input" placeholder="Rechercher un ustensiles">
+                                <span class="input-group-append">
+                                    <button class="btn text-white pe-0" type="button">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </button>
+                                </span>
+                            </div>
+
+                            <div class="border-0 bg-transparent w-100">
+                                <div id="ustensils" class="row row-cols-3 w-100 align-items-center">
+                                    <p class="col">Action</p>
+                                    <p class="col">Another action</p>
+                                    <p class="col">Something else here</p>
+                                    <p class="col">Another action</p>
+                                    <p class="col">Another action</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -102,41 +150,7 @@
 
 
         <!-- recipes -->
-        <section id="recipes" class="row row-cols-3 gap-5">
-            <!-- <div class="p-0 m-0"> -->
-                <article class="card border-0 p-2" style="width: 23.75rem; height:22.75rem;">
-                    <!-- photo plat -->
-                    <div class="card-img-top bg-secondary-V1" style="height: 11.13rem;"></div>
-    
-                    <div class="card-body bg-primary-V1">
-                        <div class="row pt-2 mb-2">
-                            <div class="col-9">
-                                <h5 class="card-title fw-light">Limonade de Coco</h5>
-                            </div>
-    
-                            <div class="col ps-0 text-end">
-                                <i class=" fa-regular fa-clock"></i>
-                                <p class="fw-bold d-inline-block m-0"> 15min</p>
-                            </div>
-                        </div>
-    
-                        <div class="row  fs-12">
-                            <div class="col">
-                                <ul class="list-unstyled">
-                                    <li class="list-group-item"><span class="fw-bold">Crème de coco : </span>400ml</li>
-                                    <li class="list-group-item"><span class="fw-bold">Jus de citron : </span>2</li>
-                                    <li class="list-group-item"><span class="fw-bold">Sucre : </span>20g</li>
-                                </ul>
-                            </div>
-    
-                            <div class="col text-truncate-container">
-                                <p class="text-truncate m-0">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            <!-- </div> -->
-           
+        <section id="recipes" class="row row-cols-auto gap-5">
         </section>
 
     </main>
@@ -156,10 +170,15 @@
     <script src="js/templates/FilterTemplate.js"></script>
     <script src="js/templates/DisplayRecipes.js"></script>
 
+    <!-- V1 -->
+    <script src="js/V1/Toggle.js"></script>
+    <script src="js/V1/Filters-V1.js"></script>
+
     <!-- Utils -->
-    <script src="js/utils/Filters.js"></script>
     <script src="js/utils/RecipesIndex.js"></script>
     <script src="js/utils/SearchRecipes.js"></script>
+    
+    
 
     <!-- Entries -->
     <script src="js/app-V1.js"></script>

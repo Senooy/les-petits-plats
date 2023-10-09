@@ -31,9 +31,7 @@ class DisplayRecipes {
 
     this._updateRecipesCount(recipesCount);
 
-    this._filters.update(
-      filtersData
-    );
+    this._filters.update(filtersData);
   }
 
   renderV1(recipes, activeFilters = new Map) {

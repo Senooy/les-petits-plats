@@ -4,7 +4,8 @@
   "description": "",
   "main": "recipes.js",
   "scripts": {
-    "sass" : "sass --watch ./sass/style.scss:./public/css/style.css"
+    "sass" : "sass --watch ./sass/custom.scss:./public/css/style.css",
+    "sass-V1" : "sass --watch ./sass/custom-V1.scss:./public/css/style-V1.css"
   },
   "repository": {
     "type": "git",
