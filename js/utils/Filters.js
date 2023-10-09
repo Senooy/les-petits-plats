@@ -3,8 +3,6 @@ class Filters {
         this._filtersListId = filtersListId
         this._$wrapperFiltersList = this._getWrappers()
         this._$wrapperTags = document.querySelector(`#${wrapperTagsId}`)
-
-        console.log(this._$wrapperFiltersList);
     }
 
     _getWrappers() {

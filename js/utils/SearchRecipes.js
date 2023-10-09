@@ -1,14 +1,15 @@
 class SearchRecipes extends StringUtils {
-  constructor(displayRecipe, recipesIndex, recipes) {
+  constructor(recipesIndex, recipes) {
     super()
-    this._displayRecipe = displayRecipe;
     this._allRecipes = recipes;
     this._currentRecipesIndex = recipesIndex;
     this._currentRecipes = [...this._allRecipes.values()];
   }
 
-  setupSearchInput() {
+  setupSearchInput(displayRecipe) {
     const searchInput = document.querySelector('input[name="q"]');
+    this._displayRecipe = displayRecipe;
+
 
     searchInput.addEventListener('input', () => {
       const searchValue = searchInput.value.trim();

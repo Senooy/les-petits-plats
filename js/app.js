@@ -14,18 +14,20 @@ class App {
       recipes.set(recipeInstance.id, recipeInstance);
     });
 
+    // Generates 3 index for each filter category.
+    const recipesIndex = new RecipesIndex(recipes);
+
+    // Search system
+    const searchRecipes = new SearchRecipes(recipesIndex, recipes)
+
     // display ALL the recipes 
     const filters = new Filters(this._filtersListId, 'tags')
 
     const displayRecipe = new DisplayRecipes(this.$wrapperRecipes, this.$wrapperRecipesCount, filters)
     displayRecipe.render(recipes)
 
-    // Generates 3 index for each filter category.
-    const recipesIndex = new RecipesIndex(recipes);
-
-    // Search system
-    const searchRecipes = new SearchRecipes(displayRecipe, recipesIndex, recipes)
-    searchRecipes.setupSearchInput()
+    // Init main search input
+    searchRecipes.setupSearchInput(displayRecipe)
 
     console.log(`app, recipeIndex : `);
     console.log(recipesIndex);
