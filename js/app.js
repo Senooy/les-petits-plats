@@ -1,5 +1,6 @@
 class App {
   constructor() {
+    this.searchInput = document.querySelector('input[name="q"]');
     this.$wrapperRecipes = document.querySelector("#recipes");
     this.$wrapperRecipesCount = document.querySelector('#displayRecipesCount')
     this._filtersListId = ['ingredients', 'appliances', 'ustensils']
@@ -28,7 +29,7 @@ class App {
     displayRecipe.render(recipes)
 
     // Init main search input
-    searchRecipes.setupSearchInput(displayRecipe)
+    searchRecipes.setupSearchInput(this.searchInput, displayRecipe)
   }
 }
 

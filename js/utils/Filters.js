@@ -35,7 +35,7 @@ class Filters extends StringUtils {
         });
     }
 
-    _handleTagClick(filterTemplate, template) {
+    _handleFilterClick(filterTemplate, template) {
         const tagTxt = template.textContent;
         const $wrapper = filterTemplate.createTagCard(tagTxt);
 
@@ -57,7 +57,7 @@ class Filters extends StringUtils {
             const filterTemplate = new FilterTemplate(filterType, filter);
 
             const template = filterTemplate.createFilter();
-            template.addEventListener('click', () => this._handleTagClick(filterTemplate, template));
+            template.addEventListener('click', () => this._handleFilterClick(filterTemplate, template));
 
             $wrapperFilter.appendChild(template);
         });
@@ -65,8 +65,8 @@ class Filters extends StringUtils {
 
     _filterAndDisplayMatchingValues(searchValue, filterData, $wrapperFilter, filterType) {
         const matchingValues = filterData.filter(filter => {
-            const normalizeSearch = this.capitalizeString(searchValue);
-            return filter.includes(normalizeSearch);
+            const normalizeSearch = this.normalizeString(searchValue);
+            return this.normalizeString(filter).includes(normalizeSearch);
         });
 
         $wrapperFilter.innerHTML = "";

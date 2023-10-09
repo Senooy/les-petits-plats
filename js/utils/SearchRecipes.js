@@ -7,10 +7,8 @@ class SearchRecipes extends StringUtils {
     this._resultMainSearch = [...this._allRecipes.keys()];
   }
 
-  setupSearchInput(displayRecipe) {
-    const searchInput = document.querySelector('input[name="q"]');
+  setupSearchInput(searchInput, displayRecipe) {
     this._displayRecipe = displayRecipe;
-
 
     searchInput.addEventListener('input', () => {
       const searchValue = searchInput.value.trim();
@@ -23,6 +21,17 @@ class SearchRecipes extends StringUtils {
         this._updateDisplayRecipes()
       }      
     });
+
+    const searchBtn = searchInput.nextElementSibling.querySelector('button')
+
+    searchBtn.addEventListener('click', () => {
+      const searchValue = searchInput.value.trim();
+      
+      if (searchValue != "") {
+        this._resultMainSearch = this._mainSearch(searchValue)
+        this._updateDisplayRecipes() 
+      }
+    })
   }
 
   // Called by the elements in the selects filters
