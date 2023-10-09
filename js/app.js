@@ -3,7 +3,7 @@ class App {
     this.searchInput = document.querySelector('input[name="q"]');
     this.$wrapperRecipes = document.querySelector("#recipes");
     this.$wrapperRecipesCount = document.querySelector('#displayRecipesCount')
-    this._filtersListId = ['ingredients', 'appliances', 'ustensils']
+    this._filtersListsIds = ['ingredients', 'appliances', 'ustensils']
   }
 
   main() {
@@ -23,7 +23,7 @@ class App {
     const searchRecipes = new SearchRecipes(recipesIndex, recipes)
 
     // display ALL the recipes 
-    const filters = new Filters(this._filtersListId, 'tags', searchRecipes)
+    const filters = new Filters(this._filtersListsIds, 'tags', searchRecipes)
 
     const displayRecipe = new DisplayRecipes(this.$wrapperRecipes, this.$wrapperRecipesCount, filters)
     displayRecipe.render(recipes)

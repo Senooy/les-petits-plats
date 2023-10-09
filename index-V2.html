@@ -15,154 +15,153 @@
     <title>Les petits plats</title>
 </head>
 
-<body>
-    <div class="container-fluid">
-        <header style="height: 41em;">
-            <div class="bg-image h-100" style="background-image: url('public/assets/img/bg-search.png'); ">
-                <!-- Logo -->
-                <img class="p-5" src="public/assets/img/logo.svg" alt="">
+<body class="container-fluid">
+    <header style="height: 38em;">
+        <div class="bg-image h-100" style="background-image: url('public/assets/img/bg-search.png'); ">
+            <!-- Logo -->
+            <img class="p-5" src="public/assets/img/logo.svg" alt="">
 
-                <div class="container ">
-                    <!-- Title -->
-                    <h1 class="text-primary font-accent fs-44 text-uppercase pb-4 text-center">Cherchez parmi plus de 1500 recettes du
-                        quotidien, simples et délicieuses</h1>
+            <div class="container ">
+                <!-- Title -->
+                <h1 class="text-primary font-accent fs-44 text-uppercase pb-4 text-center">Cherchez parmi plus de
+                    1500 recettes du
+                    quotidien, simples et délicieuses</h1>
 
-                    <!-- Search Bar -->
-                    <div class="input-group bg-white rounded p-2 mt-4">
-                        <input class="form-control border-0 rounded shadow-none" type="search"
-                            placeholder="Rechercher un recette, un ingrédient..." id="main-search" name="q">
+                <!-- Search Bar -->
+                <div class="input-group bg-white rounded p-2 mt-4">
+                    <input class="form-control border-0 rounded shadow-none" type="search"
+                        placeholder="Rechercher un recette, un ingrédient..." id="main-search" name="q">
 
-                        <span class="input-group-append">
-                            <button class="btn btn-outline-black bg-black text-white border" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-
-
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-black bg-black text-white border" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
                 </div>
+
+
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main class="py-5 bg-tertiary">
-            <div class="container">
+    <main class="py-5 bg-tertiary">
+        <div class="container">
 
-                <section class="row">
-                    <!-- Ingredients List -->
-                    <div class="col-2">
-                        <div class="dropdown w-100">
-                            <button
-                                class="btn p-3 rounded-3 btn-white text-black w-100 d-flex align-items-center justify-content-between"
-                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Ingrédients
+            <section class="row">
+                <!-- Ingredients List -->
+                <div class="col-2">
+                    <div class="dropdown w-100">
+                        <button data-bs-display="static"
+                            class="btn p-3 rounded-3 btn-white text-black w-100 d-flex align-items-center justify-content-between"
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ingrédients
 
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                            <ul class="dropdown-menu rounded-3 border-0 shadow">
-                                <!-- Search Bar -->
-                                <li class="m-2">
-                                    <div class="input-group border rounded-1">
-                                        <input class="form-control border-0 shadow-none" type="search"
-                                            id="ingredients-search-input">
-                                        <span class="input-group-append">
-                                            <button class="btn text-dark" type="button">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </li>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu rounded-3 border-0 shadow">
+                            <!-- Search Bar -->
+                            <li class="m-2">
+                                <div class="input-group border rounded-1">
+                                    <input class="form-control border-0 shadow-none" type="search"
+                                        id="ingredients-search-input">
+                                    <span class="input-group-append">
+                                        <button class="btn text-dark" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </li>
 
-                                <li class="mt-3">
-                                    <ul id="ingredients" class="list-unstyled m-2 mb-0 overflow-auto"
-                                        style="max-height: 19.69em">
-                                        <!-- The ingredients used in the displayed recipes will be listed here -->
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                            <li class="mt-3">
+                                <ul id="ingredients" class="list-unstyled m-2 mb-0 overflow-auto"
+                                    style="max-height: 19.69em">
+                                    <!-- The ingredients used in the displayed recipes will be listed here -->
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
+                </div>
 
-                    <!-- Appliances List -->
-                    <div class="col-2">
-                        <div class="dropdown w-100">
-                            <button
-                                class="btn p-3 btn-white rounded-3 w-100 d-flex align-items-center justify-content-between"
-                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Appareils
+                <!-- Appliances List -->
+                <div class="col-2">
+                    <div class="dropdown w-100">
+                        <button data-bs-display="static"
+                            class="btn p-3 btn-white rounded-3 w-100 d-flex align-items-center justify-content-between"
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Appareils
 
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                            <ul class="dropdown-menu rounded-3 border-0 shadow">
-                                <!-- Search Bar -->
-                                <li class="m-2">
-                                    <div class="input-group border rounded-1">
-                                        <input class="form-control border-0 shadow-none" type="search"
-                                            id="appliances-search-input">
-                                        <span class="input-group-append">
-                                            <button class="btn text-dark" type="button">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </li>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu rounded-3 border-0 shadow">
+                            <!-- Search Bar -->
+                            <li class="m-2">
+                                <div class="input-group border rounded-1">
+                                    <input class="form-control border-0 shadow-none" type="search"
+                                        id="appliances-search-input">
+                                    <span class="input-group-append">
+                                        <button class="btn text-dark" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </li>
 
-                                <li class="mt-3">
-                                    <ul id="appliances" class="list-unstyled m-2  mb-0 overflow-auto"
-                                        style="max-height: 19.69em">
-                                        <!-- The appliance used in the displayed recipes will be listed here -->
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                            <li class="mt-3">
+                                <ul id="appliances" class="list-unstyled m-2 mb-0 overflow-auto"
+                                    style="max-height: 19.69em;">
+                                    <!-- The appliance used in the displayed recipes will be listed here -->
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
+                </div>
 
-                    <!-- Ustensils List -->
-                    <div class="col-2">
-                        <div class="dropdown w-100">
-                            <button
-                                class="btn p-3 btn-white rounded-3 w-100 d-flex align-items-center justify-content-between"
-                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Ustensiles
+                <!-- Ustensils List -->
+                <div class="col-2">
+                    <div class="dropdown w-100">
+                        <button data-bs-display="static"
+                            class="btn p-3 btn-white rounded-3 w-100 d-flex align-items-center justify-content-between"
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ustensiles
 
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                            <ul class="dropdown-menu rounded-3 border-0 shadow">
-                                <!-- Search Bar -->
-                                <li class="m-2">
-                                    <div class="input-group border rounded-1">
-                                        <input class="form-control border-0 shadow-none" type="search"
-                                            id="ustensils-search-input">
-                                        <span class="input-group-append">
-                                            <button class="btn text-dark" type="button">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </li>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu rounded-3 border-0 shadow">
+                            <!-- Search Bar -->
+                            <li class="m-2">
+                                <div class="input-group border rounded-1">
+                                    <input class="form-control border-0 shadow-none" type="search"
+                                        id="ustensils-search-input">
+                                    <span class="input-group-append">
+                                        <button class="btn text-dark" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </li>
 
-                                <li class="mt-3">
-                                    <ul id="ustensils" class="list-unstyled m-2 mb-0 overflow-auto"
-                                        style="max-height: 19.69em">
-                                        <!-- The ustensils used in the displayed recipes will be listed here -->
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                            <li class="mt-3">
+                                <ul id="ustensils" class="list-unstyled m-2 mb-0 overflow-auto"
+                                    style="max-height: 19.69em">
+                                    <!-- The ustensils used in the displayed recipes will be listed here -->
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
+                </div>
 
 
-                    <div id="displayRecipesCount" class="col text-end font-accent fs-21"></div>
-                </section>
+                <div id="displayRecipesCount" class="col text-end font-accent fs-21"></div>
+            </section>
 
-                <section id="tags" class="row row-cols-6 g-4 mt-1">
-                </section>
+            <section id="tags" class="row row-cols-6 g-4 mt-1">
+            </section>
 
-                <!-- Display Recipes -->
-                <section id="recipes" class="row row-cols-3 mt-2 g-4 gy-5">
-                </section>
+            <!-- Display Recipes -->
+            <section id="recipes" class="row row-cols-3 mt-2 g-4 gy-5" style="min-height: 30rem;">
+            </section>
 
-        </main>
-    </div>
+    </main>
 
     <!-- Data -->
     <script src="./data/recipesData.js"></script>
@@ -174,16 +173,16 @@
     <script src="js/models/Ingredient.js"></script>
     <script src="js/models/Recipe.js"></script>
 
-     <!-- Templates -->
-     <script src="js/templates/RecipeCard.js"></script>
-     <script  src="js/templates/FilterTemplate.js"></script>
-     <script src="js/templates/DisplayRecipes.js"></script>
+    <!-- Templates -->
+    <script src="js/templates/RecipeCard.js"></script>
+    <script src="js/templates/FilterTemplate.js"></script>
+    <script src="js/templates/DisplayRecipes.js"></script>
 
     <!-- Utils -->
     <script src="js/utils/Filters.js"></script>
     <script src="js/utils/RecipesIndex.js"></script>
     <script src="js/utils/SearchRecipes.js"></script>
-   
+
 
     <!-- Entries -->
     <script src="./js/app.js"></script>
