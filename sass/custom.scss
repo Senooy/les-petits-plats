@@ -1,10 +1,22 @@
-@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500&display=swap');
+
+$police-anton: 'Anton', sans-serif;
+$font-family-sans-serif: 'AManrope', sans-serif;
+
+
+.font-accent {
+  font-family: $police-anton;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
 
 .bg-image {
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-}
+  background-repeat: no-repeat;}
+
 
 .text-truncate-container {
   width: 171px;
@@ -22,3 +34,30 @@
   color: white;
   opacity: 1;
 }
+
+$primary: #FFD15B;
+$secondary: #7A7A7A;
+$tertiary: #C6C6C6;
+
+$theme-colors: (
+  "primary" : $primary,
+  "secondary": $secondary,
+  "tertiary" :  $tertiary,
+  "white" : #FFF,
+  "black" : #000,
+);
+
+$font-sizes: (
+  12: 12px,
+  14: 14px,
+  18: 18px,
+  21: 21px,
+  44: 44px,
+);
+
+.dropdown-menu > li > ul > li:hover {
+  background-image: none;
+  background-color: $primary
+}
+
+@import "node_modules/bootstrap/scss/bootstrap.scss";
