@@ -8,11 +8,34 @@ class DisplayRecipes {
   render(recipes, activeFilters = new Map) {
     this._reset()
     const filtersData = this._initializeFilters();
-    let recipesCount = 0
 
-    console.log(`recipes`);
-    console.log(recipes);
+    recipes.forEach(recipe => {
+      const template = new RecipeCard(recipe);
+      this._$wrapperRecipes.appendChild(template.createRecipeCardV2());
+      this._updateFilters(recipe, filtersData, activeFilters);
+    });
 
+    this._updateRecipesCount(recipes);
+
+    this._filters.update(
+      filtersData
+    );
+  }
+
+  errorMsg() {
+    this._reset()
+    
+    this._$wrapperRecipes.innerHTML = "Aucune recette trouvée"
+
+    this._updateRecipesCount()
+  }
+
+  _reset() {
+    this._$wrapperRecipes.innerHTML = "";
+  }
+
+  _updateRecipesCount(recipes = []) {
+    let recipesCount
     if (recipes instanceof Map) {
       recipesCount = recipes.size
     } else if (recipes instanceof Array) {
@@ -21,37 +44,7 @@ class DisplayRecipes {
       throw new Error(`recipes must be a map or an array`)
     }
 
-    if (recipesCount > 0) {
-      recipes.forEach(recipe => {
-        const template = new RecipeCard(recipe);
-        this._$wrapperRecipes.appendChild(template.createRecipeCardV2());
-        this._updateFilters(recipe, filtersData, activeFilters);
-      });
-    } else {
-      this._errorMsg()
-    }
-
-    this._updateRecipesCount(recipesCount);
-
-    this._filters.update(
-      filtersData
-    );
-  }
-
-  _errorMsg() {
-    const errorMsg = `
-      <p class="col-12 fs-18 fw-bold text-center"> Aucun recette ne correspond à votre recherche... vous pouvez chercher « tarte aux pommes », « poisson », etc. </p>
-    `
-    this._$wrapperRecipes.innerHTML = errorMsg;
-  }
-
-  _reset() {
-    this._$wrapperRecipes.innerHTML = "";
-  }
-
-  _updateRecipesCount(recipesCount) {
-    console.log(`recipesCount : ${recipesCount}`);
-    this._$wrapperRecipesCount.innerHTML = `${recipesCount < 10 ? `0${recipesCount}` : `${recipesCount}`} ${recipesCount > 0 ? "recettes" : "recette"}`;
+    this._$wrapperRecipesCount.innerHTML = `${recipesCount} ${recipesCount > 1 ? "recettes" : "recette"}`;
   }
 
   _initializeFilters() {

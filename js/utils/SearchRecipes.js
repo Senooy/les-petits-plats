@@ -34,13 +34,13 @@ class SearchRecipes extends StringUtils {
     })
   }
 
-  // Called by the elements in the filters' selects 
+  // Called by the elements in the selects filters
   searchByFilter(filterType, filter) {
       this._addFilter(filterType, filter)
       this._updateDisplayRecipes() 
   }
 
-  // Returns the ids whose matching with either the name, the ingredients or description of ALL the recipes
+  // Returns the ids whose matching in the name, ingredients and description of ALL the recipes
   _mainSearch(searchTerm) {
     const filteredRecipes = [...this._allRecipes.values()].filter((recipe) => {
         const normalizedSearch = this.normalizeString(searchTerm);
@@ -77,7 +77,12 @@ class SearchRecipes extends StringUtils {
 
     const recipesIds = this._getRecipesFiltered()
 
-    this._displayRecipe.render(recipesFromIds(recipesIds), this._activeFiltersIndex)
+    if (recipesIds.length > 0) {
+      this._currentRecipes = recipesIds
+      this._displayRecipe.render(recipesFromIds(recipesIds), this._activeFiltersIndex)
+    } else {
+      this._displayRecipe.errorMsg()
+    }
   }
 
   // Returns only the communs ids from all the arrays matching with the filters
