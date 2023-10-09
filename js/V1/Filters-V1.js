@@ -33,6 +33,10 @@ class Filters extends StringUtils {
     }
 
     _handleFilterClick(filterTemplate, template) {
+        if (this._$wrapperTags.childElementCount == 0) {
+            this._$wrapperTags.classList.add('mt-4')
+        } 
+
         const tagTxt = template.textContent;
         const $wrapper = filterTemplate.createTagCardV1(tagTxt);
         console.log($wrapper);
@@ -44,6 +48,10 @@ class Filters extends StringUtils {
         btnClose.addEventListener('click', () => {
             $wrapper.remove();
             this._searchRecipes.removeFilter(tagTxt);
+
+            if (this._$wrapperTags.childElementCount == 0) {
+                this._$wrapperTags.classList.remove('mt-4')
+            }
         });
 
         this._$wrapperTags.appendChild($wrapper);
