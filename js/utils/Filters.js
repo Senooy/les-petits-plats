@@ -1,9 +1,10 @@
-class Filters {
+class Filters extends StringUtils {
     constructor(filtersListId, wrapperTagsId, searchRecipes) {
-        this._filtersListId = filtersListId
-        this._$wrapperFiltersList = this._getWrappers()
-        this._$wrapperTags = document.querySelector(`#${wrapperTagsId}`)
-        this._searchRecipes = searchRecipes
+        super();
+        this._filtersListId = filtersListId;
+        this._$wrapperFiltersList = this._getWrappers();
+        this._$wrapperTags = document.querySelector(`#${wrapperTagsId}`);
+        this._searchRecipes = searchRecipes;
     }
 
     _getWrappers() {
@@ -12,30 +13,76 @@ class Filters {
 
     update(filtersData) {
         this._$wrapperFiltersList.forEach($wrapperFilter => {
-            $wrapperFilter.innerHTML = ""
-            const key = $wrapperFilter.id
+            const filterType = $wrapperFilter.id;
 
-            filtersData[key].forEach(item => {
-                const filterTemplate = new FilterTemplate(item, key)
-                const template = filterTemplate.createItem()
+            this._clearFilterAndReset(filtersData[filterType], $wrapperFilter, filterType)
+            this._clearInput($wrapperFilter)
 
-                template.addEventListener('click', () => {
-                    const tagTxt = template.textContent;
-                    const $wrapper = filterTemplate.createTagCard(tagTxt);
-
-                    this._searchRecipes.searchByFilter(filterTemplate.filterType, tagTxt); 
-
-                    const btnClose = $wrapper.querySelector('button')
-                    btnClose.addEventListener('click', () => {
-                        $wrapper.remove()
-                        this._searchRecipes.removeFilter(tagTxt); 
-                    })
-
-                    this._$wrapperTags.appendChild($wrapper)
-                  });
-
-                $wrapperFilter.appendChild(template)
-            })
+            this._setupInputFilter($wrapperFilter, filtersData[filterType], filterType);
         });
+    }
+
+    _setupInputFilter($wrapperFilter, filterData, filterTemplate) {
+        const input = this._getInput($wrapperFilter);
+
+        input.addEventListener('input', () => {
+            const searchValue = input.value.trim();
+            if (searchValue === "") {
+                this._clearFilterAndReset(filterData, $wrapperFilter, filterTemplate); // display ALL filters available
+            } else {
+                this._filterAndDisplayMatchingValues(searchValue, filterData, $wrapperFilter, filterTemplate);
+            }
+        });
+    }
+
+    _handleTagClick(filterTemplate, template) {
+        const tagTxt = template.textContent;
+        const $wrapper = filterTemplate.createTagCard(tagTxt);
+
+        this._searchRecipes.searchByFilter(filterTemplate.filterType, tagTxt);
+
+        const btnClose = $wrapper.querySelector('button');
+        btnClose.addEventListener('click', () => {
+            $wrapper.remove();
+            this._searchRecipes.removeFilter(tagTxt);
+        });
+
+        this._$wrapperTags.appendChild($wrapper);
+    }
+
+    _clearFilterAndReset(filterData, $wrapperFilter, filterType) {
+        $wrapperFilter.innerHTML = "";
+
+        filterData.forEach(filter => {
+            const filterTemplate = new FilterTemplate(filterType, filter);
+
+            const template = filterTemplate.createFilter();
+            template.addEventListener('click', () => this._handleTagClick(filterTemplate, template));
+
+            $wrapperFilter.appendChild(template);
+        });
+    }
+
+    _filterAndDisplayMatchingValues(searchValue, filterData, $wrapperFilter, filterType) {
+        const matchingValues = filterData.filter(filter => {
+            const normalizeSearch = this.capitalizeString(searchValue);
+            return filter.includes(normalizeSearch);
+        });
+
+        $wrapperFilter.innerHTML = "";
+        if (matchingValues.length > 0) {
+           this._clearFilterAndReset(matchingValues, $wrapperFilter, filterType)
+        } else {
+            $wrapperFilter.innerHTML = "Rien trouvé";
+        }
+    }
+
+    _clearInput($wrapperFilter) {
+        const input = this._getInput($wrapperFilter)
+        input.value = ""
+    }
+
+    _getInput($wrapperFilter) {
+        return $wrapperFilter.parentElement.parentElement.querySelector('input')
     }
 }

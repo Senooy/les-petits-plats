@@ -1,10 +1,10 @@
 class FilterTemplate {
-    constructor(data, filterType) {
-        this._data = data
+    constructor(filterType, data) {
         this._filterType = filterType
+        this._data =  data
     }
 
-    createItem() {
+    createFilter() {
         const $wrapper = document.createElement('li');
         $wrapper.classList.add('list-group-item');
         $wrapper.innerText = this._data;
@@ -12,14 +12,14 @@ class FilterTemplate {
         return $wrapper
         }
     
-    createTagCard(data) {
+    createTagCard() {
         const $wrapper = document.createElement('div')
         $wrapper.classList.add('col')
 
         $wrapper.innerHTML = `
             <div class="card">
                 <div class="card-body btn btn-warning d-flex align-items-center justify-content-between" style="height: 3.13rem;">
-                    ${data}            
+                    ${this._data}            
                     <button type="button" class="btn-close" aria-label="Close"></button>
                 </div>
             </div>

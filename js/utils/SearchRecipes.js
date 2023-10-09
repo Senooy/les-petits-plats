@@ -98,11 +98,6 @@ class SearchRecipes extends StringUtils {
     })
     return commonIds
   }
-
-  // Sets up the input in the advanced filters
-  setupFilterInput() {
-    // search IN the list for the filter to apply !!
-  }
 }
 
 // Other Main Search
