@@ -6,11 +6,12 @@ class DisplayRecipes {
   }
 
   render(recipes) {
-    this._$wrapperRecipes.innerHTML = "";
+    this._reset()
     const filtersData = this._initializeFilters();
 
     recipes.forEach(recipe => {
-      this._render(recipe);
+      const template = new RecipeCard(recipe);
+      this._$wrapperRecipes.appendChild(template.createRecipeCardV2());
       this._updateFilters(recipe, filtersData);
     });
 
@@ -21,9 +22,12 @@ class DisplayRecipes {
     );
   }
 
-  _render(recipe) {
-    const template = new RecipeCard(recipe);
-    this._$wrapperRecipes.appendChild(template.createRecipeCardV2());
+  errorMsg() {
+    this._reset()
+    
+    this._$wrapperRecipes.innerHTML = "Aucune recette trouvée"
+
+    this._updateRecipesCount([])
   }
 
   _reset() {
@@ -67,9 +71,5 @@ class DisplayRecipes {
         filtersData.ustensils.push(ustensil);
       }
     });
-  }
-
-  get recipes() {
-    return this._recipes;
   }
 }

@@ -21,7 +21,7 @@ class App {
     const searchRecipes = new SearchRecipes(recipesIndex, recipes)
 
     // display ALL the recipes 
-    const filters = new Filters(this._filtersListId, 'tags')
+    const filters = new Filters(this._filtersListId, 'tags', searchRecipes)
 
     const displayRecipe = new DisplayRecipes(this.$wrapperRecipes, this.$wrapperRecipesCount, filters)
     displayRecipe.render(recipes)

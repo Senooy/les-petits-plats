@@ -1,6 +1,7 @@
 class FilterTemplate {
-    constructor(data) {
+    constructor(data, filterType) {
         this._data = data
+        this._filterType = filterType
     }
 
     createItem() {
@@ -24,5 +25,9 @@ class FilterTemplate {
             </div>
         `
         return $wrapper;
+    }
+
+    get filterType () {
+        return this._filterType
     }
 }
