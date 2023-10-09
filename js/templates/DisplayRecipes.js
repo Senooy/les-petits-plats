@@ -5,14 +5,14 @@ class DisplayRecipes {
     this._filters = filters;
   }
 
-  render(recipes) {
+  render(recipes, activeFilters = new Map) {
     this._reset()
     const filtersData = this._initializeFilters();
 
     recipes.forEach(recipe => {
       const template = new RecipeCard(recipe);
       this._$wrapperRecipes.appendChild(template.createRecipeCardV2());
-      this._updateFilters(recipe, filtersData);
+      this._updateFilters(recipe, filtersData, activeFilters);
     });
 
     this._updateRecipesCount(recipes);
@@ -27,14 +27,14 @@ class DisplayRecipes {
     
     this._$wrapperRecipes.innerHTML = "Aucune recette trouvée"
 
-    this._updateRecipesCount([])
+    this._updateRecipesCount()
   }
 
   _reset() {
     this._$wrapperRecipes.innerHTML = "";
   }
 
-  _updateRecipesCount(recipes) {
+  _updateRecipesCount(recipes = []) {
     let recipesCount
     if (recipes instanceof Map) {
       recipesCount = recipes.size
@@ -55,19 +55,20 @@ class DisplayRecipes {
     };
   }
 
-  _updateFilters(recipe, filtersData) {
+  _updateFilters(recipe, filtersData, activeFilters) {
     recipe.ingredients.forEach(ingredient => {
-      if (!filtersData.ingredients.includes(ingredient.capitalizeName)) {
+      if (!activeFilters.has(ingredient.capitalizeName) && !filtersData.ingredients.includes(ingredient.capitalizeName)) {
         filtersData.ingredients.push(ingredient.capitalizeName);
       }
-    });
+    })
 
-    if (!filtersData.appliances.includes(recipe.capitalizeAppliance)) {
+
+    if (!activeFilters.has(recipe.capitalizeAppliance) && !filtersData.appliances.includes(recipe.capitalizeAppliance)) {
       filtersData.appliances.push(recipe.capitalizeAppliance);
     }
 
     recipe.capitalizeUstensils.forEach(ustensil => {
-      if (!filtersData.ustensils.includes(ustensil)) {
+      if (!activeFilters.has(ustensil) && !filtersData.ustensils.includes(ustensil)) {
         filtersData.ustensils.push(ustensil);
       }
     });

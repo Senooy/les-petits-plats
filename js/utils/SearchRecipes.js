@@ -3,7 +3,8 @@ class SearchRecipes extends StringUtils {
     super()
     this._allRecipes = recipes;
     this._recipesIndex = recipesIndex;
-    this._currentRecipes = [...this._allRecipes.keys()];
+    this._activeFiltersIndex = new Map();
+    this._resultMainSearch = [...this._allRecipes.keys()];
   }
 
   setupSearchInput(displayRecipe) {
@@ -15,25 +16,19 @@ class SearchRecipes extends StringUtils {
       const searchValue = searchInput.value.trim();
       
       if (searchValue.length >= 3) {
-        const filteredRecipesIds = this._getRecipesFiltered(this._mainSearch(searchValue))
-        this._updateDisplayRecipes(filteredRecipesIds)
+        this._resultMainSearch = this._mainSearch(searchValue)
+        this._updateDisplayRecipes()
       } else if (searchValue == "") {
-        this._updateDisplayRecipes([...this._allRecipes.keys()])
+        this._resultMainSearch = [...this._allRecipes.keys()];
+        this._updateDisplayRecipes()
       }      
     });
   }
 
   // Called by the elements in the selects filters
-  searchByFilter(filterType, searchTerm) {
-    if (searchTerm) {
-      const filteredRecipesIds = this._getRecipesFiltered(this._getFilterIndex(filterType, searchTerm))
-      this._updateDisplayRecipes(filteredRecipesIds)
-
-      console.log(filteredRecipesIds);
-    } else {
-      console.log(`else de searchByFilter`);
-    }
-    
+  searchByFilter(filterType, filter) {
+      this._addFilter(filterType, filter)
+      this._updateDisplayRecipes() 
   }
 
   // Returns the ids whose matching in the name, ingredients and description of ALL the recipes
@@ -56,28 +51,52 @@ class SearchRecipes extends StringUtils {
     return filteredRecipes.map((recipe) => recipe.id);
   }
 
-  // Returns the ids corresponding from RecipesIndex
-  _getFilterIndex(filterType, searchTerm) {
-    return this._recipesIndex[filterType][this.normalizeString(searchTerm)];
+  // add new filter in _activeFiltersIndex
+  _addFilter(filterType, filter) {
+    this._activeFiltersIndex.set(filter, filterType)
   }
 
-  _updateDisplayRecipes(recipesIds) {
+  removeFilter(filter) {
+    this._activeFiltersIndex.delete(filter)
+    this._updateDisplayRecipes()
+  }
+
+  _updateDisplayRecipes() {
+    const recipesFromIds = (recipesIds) => {
+      return recipesIds.map((id) => this._allRecipes.get(id));
+    }
+
+    const recipesIds = this._getRecipesFiltered()
+
     if (recipesIds.length > 0) {
       this._currentRecipes = recipesIds
-      this._displayRecipe.render(this._getRecipesFromId(this._currentRecipes))
+      this._displayRecipe.render(recipesFromIds(recipesIds), this._activeFiltersIndex)
     } else {
       this._displayRecipe.errorMsg()
     }
   }
 
-  // Return the recipes from their id
-  _getRecipesFromId(arrayRecipesId) {
-    return arrayRecipesId.map((id) => this._allRecipes.get(id));
+  // Returns only the communs ids from all the arrays matching with the filters
+  _getRecipesFiltered() {
+    const idsByFilters =  this._idsByFilters()
+
+    return idsByFilters.length > 0 ? this._resultMainSearch.filter((value) => idsByFilters.includes(value))
+     : this._resultMainSearch
   }
 
-  // Returns only the communs ids between the recipes already display and the recipes matching the new filter
-  _getRecipesFiltered(filteredArray) {
-    return this._currentRecipes.filter((value) => filteredArray.includes(value))
+  // Makes 1 array of ids from all the active filters
+  _idsByFilters() {
+    let commonIds = []
+    this._activeFiltersIndex.forEach((filterType, filter) => {
+      const ids = this._recipesIndex[filterType][this.normalizeString(filter)];
+
+      if (commonIds.length === 0) {
+        commonIds = ids
+      } else {
+        commonIds = commonIds.filter(id => ids.includes(id))
+      }
+    })
+    return commonIds
   }
 
   // Sets up the input in the advanced filters

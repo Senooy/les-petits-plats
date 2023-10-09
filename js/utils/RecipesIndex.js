@@ -5,11 +5,9 @@ class RecipesIndex {
         this._ingredients = {}
         this._appliances = {}
         this._ustensils = {}
-
-        this._init(recipes)
     }
 
-    _init(recipes) {
+    init(recipes) {
         const addRef = (id, array, ref) => {
 
             if (!array[ref]) {

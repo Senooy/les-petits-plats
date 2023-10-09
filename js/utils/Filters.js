@@ -28,6 +28,7 @@ class Filters {
                     const btnClose = $wrapper.querySelector('button')
                     btnClose.addEventListener('click', () => {
                         $wrapper.remove()
+                        this._searchRecipes.removeFilter(tagTxt); 
                     })
 
                     this._$wrapperTags.appendChild($wrapper)

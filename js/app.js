@@ -16,6 +16,7 @@ class App {
 
     // Generates 3 index for each filter category.
     const recipesIndex = new RecipesIndex(recipes);
+    recipesIndex.init(recipes)
 
     // Search system
     const searchRecipes = new SearchRecipes(recipesIndex, recipes)
@@ -28,14 +29,9 @@ class App {
 
     // Init main search input
     searchRecipes.setupSearchInput(displayRecipe)
-
-    console.log(`app, recipeIndex : `);
-    console.log(recipesIndex);
-    console.log("");
   }
 }
 
 const app = new App();
-
 app.main();
 
