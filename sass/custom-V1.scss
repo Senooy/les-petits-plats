@@ -1,0 +1,55 @@
+// Font V1
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+$font-V1: 'Lato', sans-serif;
+$font-family-sans-serif: $font-V1;
+
+$ingredient-V1 : #3282F7;
+$appliance-V1 : #68D9A4;
+$ustensil-V1 : #ED6454;
+$primary-V1 : #E7E7E7;
+$secondary-V1 : #C7BEBE;
+
+
+$theme-colors: (
+    "white" : #FFF,
+    "black" : #000,
+    "primary-V1" : $primary-V1,
+    "secondary-V1" : $secondary-V1,
+    "ingredient-V1" : $ingredient-V1,
+    "appliance-V1" : $appliance-V1,
+    "ustensil-V1" : $ustensil-V1,
+);
+
+$font-size-base : 1.12rem;
+$bs-btn-font-size : $font-size-base;
+
+$font-sizes: (
+    12: 12px,
+    16: 16px,
+    18 : 18px,
+);
+
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+.text-truncate-container {
+  width: 171px;
+}
+
+.text-truncate {
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: pre-wrap;
+  text-align: justify;
+}
+
+.color-place-holder-white::placeholder{
+  color: $white;
+  opacity: 0.75;
+}
+
+.color-place-holder-gray::placeholder{
+  color: $black;
+  opacity: 0.5;
+}

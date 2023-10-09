@@ -1,8 +1,8 @@
+// Font V2
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500&display=swap');
 
 $police-anton: 'Anton', sans-serif;
 $font-family-sans-serif: 'AManrope', sans-serif;
-
 
 .font-accent {
   font-family: $police-anton;
@@ -15,25 +15,9 @@ $font-family-sans-serif: 'AManrope', sans-serif;
 .bg-image {
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;}
-
-
-.text-truncate-container {
-  width: 171px;
+  background-repeat: no-repeat;
 }
 
-.text-truncate {
-  -webkit-line-clamp: 4;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  white-space: pre-wrap;
-  text-align: justify;
-}
-
-.color-place-holder::placeholder{
-  color: white;
-  opacity: 1;
-}
 
 $primary: #FFD15B;
 $secondary: #7A7A7A;
@@ -44,7 +28,7 @@ $theme-colors: (
   "secondary": $secondary,
   "tertiary" :  $tertiary,
   "white" : #FFF,
-  "black" : #000,
+  "black" : #000, 
 );
 
 $font-sizes: (

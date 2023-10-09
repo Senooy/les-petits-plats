@@ -10,9 +10,6 @@ class DisplayRecipes {
     const filtersData = this._initializeFilters();
     let recipesCount = 0
 
-    console.log(`recipes`);
-    console.log(recipes);
-
     if (recipes instanceof Map) {
       recipesCount = recipes.size
     } else if (recipes instanceof Array) {
@@ -21,10 +18,11 @@ class DisplayRecipes {
       throw new Error(`recipes must be a map or an array`)
     }
 
+    // Is there any recipes to display ?
     if (recipesCount > 0) {
       recipes.forEach(recipe => {
         const template = new RecipeCard(recipe);
-        this._$wrapperRecipes.appendChild(template.createRecipeCardV2());
+        this._$wrapperRecipes.appendChild(template.createRecipeCard());
         this._updateFilters(recipe, filtersData, activeFilters);
       });
     } else {
@@ -38,6 +36,38 @@ class DisplayRecipes {
     );
   }
 
+  renderV1(recipes, activeFilters = new Map) {
+    this._reset()
+    const filtersData = this._initializeFilters();
+    let recipesCount = 0
+
+    if (recipes instanceof Map) {
+      recipesCount = recipes.size
+    } else if (recipes instanceof Array) {
+      recipesCount = recipes.length
+    } else {
+      throw new Error(`recipes must be a map or an array`)
+    }
+
+    // Is there any recipes to display ?
+    if (recipesCount > 0) {
+
+      recipesCount === 2 ? this._$wrapperRecipes.classList.remove('justify-content-between') :
+      this._$wrapperRecipes.classList.add('justify-content-between');
+
+      recipes.forEach(recipe => {
+        const template = new RecipeCard(recipe);
+        this._$wrapperRecipes.appendChild(template.createRecipeCardV1());
+        this._updateFilters(recipe, filtersData, activeFilters);
+      });
+    } else {
+      this._errorMsg()
+    }
+
+    //this._filters.update(filtersData);
+  }
+
+  // Recipes not found
   _errorMsg() {
     const errorMsg = `
       <p class="col-12 fs-18 fw-bold text-center"> Aucun recette ne correspond à votre recherche... vous pouvez chercher « tarte aux pommes », « poisson », etc. </p>
@@ -62,13 +92,13 @@ class DisplayRecipes {
     };
   }
 
+  // display all the filters available without the ones already selected
   _updateFilters(recipe, filtersData, activeFilters) {
     recipe.ingredients.forEach(ingredient => {
       if (!activeFilters.has(ingredient.capitalizeName) && !filtersData.ingredients.includes(ingredient.capitalizeName)) {
         filtersData.ingredients.push(ingredient.capitalizeName);
       }
     })
-
 
     if (!activeFilters.has(recipe.capitalizeAppliance) && !filtersData.appliances.includes(recipe.capitalizeAppliance)) {
       filtersData.appliances.push(recipe.capitalizeAppliance);

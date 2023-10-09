@@ -1,10 +1,11 @@
 class SearchRecipes extends StringUtils {
-  constructor(recipesIndex, recipes) {
+  constructor(recipesIndex, recipes, version) {
     super()
     this._allRecipes = recipes;
     this._recipesIndex = recipesIndex;
     this._activeFiltersIndex = new Map();
     this._resultMainSearch = [...this._allRecipes.keys()];
+    this._version = version;
   }
 
   setupSearchInput(searchInput, displayRecipe) {
@@ -77,6 +78,7 @@ class SearchRecipes extends StringUtils {
 
     const recipesIds = this._getRecipesFiltered()
 
+    this._version === 1 ? this._displayRecipe.renderV1(recipesFromIds(recipesIds), this._activeFiltersIndex) :
     this._displayRecipe.render(recipesFromIds(recipesIds), this._activeFiltersIndex)
   }
 

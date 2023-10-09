@@ -4,8 +4,14 @@ class RecipeCard {
     }
 
     createRecipeCardV1() {
-        const $wrapper = document.createElement('div');
-        $wrapper.classList.add('col');
+        const $wrapper = document.createElement('article');
+        $wrapper.classList.add('card');
+        $wrapper.classList.add('border-0');
+        $wrapper.classList.add('p-2');
+        $wrapper.classList.add('overflow-hidden');
+       
+        $wrapper.style.width = "23.75rem"
+        $wrapper.style.height = "22.75rem"
 
         const ingredients = this._recipe.ingredients.map(ingredient => `
             <li class="list-group-item"><span class="fw-bold">${ingredient.name} ${ingredient.hasQuantity ? ': ' : ''} </span>${ingredient.quantity}</li>
@@ -13,40 +19,40 @@ class RecipeCard {
         const ingredientsHTML = ingredients.join('');
 
         const card = `
-            <article class="card" style = "width: 23.75rem; height:23rem;">
+                <!-- photo plat -->
+                <div class="card-img-top bg-secondary-V1" style="height: 11.13rem;"></div>
 
-            <img src="public/assets/img/recipes/${this._recipe.image}" class="card-img-top h-50 ratio ratio-4x3" alt="...">
-
-
-                <div class="card-body" style="background-color: E7E7E7;">
-                    <div class="row py-2">
-                        <div class="col-9">
-                            <h5 class="card-title fw-light">${this._recipe.name}</h5>
+                <div class="card-body bg-primary-V1">
+                    <div class="row pt-2 mb-2">
+                        <div class="col-8">
+                            <h2 class="card-title fs-18 fw-light">${this._recipe.name}</h2>
                         </div>
 
-                        <div class="col-3 text-end">${this._recipe.time}min</div>
+                        <div class="col ps-0 text-end">
+                            <i class=" fa-regular fa-clock"></i>
+                            <p class="fw-bold d-inline-block m-0">${this._recipe.time}min</p>
+                        </div>
                     </div>
 
-                    <div class="row pt-2 h-100">
-                        <div class="col-6">
-                            <ul class="list-unstyle">
+                    <div class="row fs-12">
+                        <div class="col">
+                            <ul class="list-unstyle p-0">
                                 ${ingredientsHTML}
                             </ul>
                         </div>
 
-                        <div class="col-6 h-100 d-flex flex-column align-items-stretch">
-                                <p class="class="d-inline-block text-truncate" style="max-width: 150px;">${this._recipe.description}</p>
+                        <div class="col text-truncate-container">
+                                <p class="text-truncate m-0">${this._recipe.description}</p>
                         </div>
                     </div>
                 </div>
-            </article>
         `
 
         $wrapper.innerHTML = card;
         return $wrapper;
     }
 
-    createRecipeCardV2() {
+    createRecipeCard() {
         const $wrapper = document.createElement('div');
         $wrapper.classList.add('col');
 
