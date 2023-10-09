@@ -18,6 +18,18 @@ class Filters {
                 const filterTemplate = new FilterTemplate(item)
                 const template = filterTemplate.createItem()
 
+                template.addEventListener('click', () => {
+                    const tagTxt = template.textContent;
+                    const $wrapper = filterTemplate.createTagCard(tagTxt);
+
+                    const btnClose = $wrapper.querySelector('button')
+                    btnClose.addEventListener('click', () => {
+                        $wrapper.remove()
+                    })
+
+                    this._$wrapperTags.appendChild($wrapper)
+                  });
+
                 $wrapperFilter.appendChild(template)
             })
         });
