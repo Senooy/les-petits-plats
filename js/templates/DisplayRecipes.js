@@ -1,5 +1,5 @@
 class DisplayRecipes {
-  constructor($wrapperRecipes, $wrapperRecipesCount, filters) {
+  constructor($wrapperRecipes, filters, $wrapperRecipesCount) {
     this._$wrapperRecipes = $wrapperRecipes;
     this._$wrapperRecipesCount = $wrapperRecipesCount;
     this._filters = filters;
@@ -49,10 +49,6 @@ class DisplayRecipes {
 
     // Is there any recipes to display ?
     if (recipesCount > 0) {
-
-      recipesCount === 2 ? this._$wrapperRecipes.classList.remove('justify-content-between') :
-      this._$wrapperRecipes.classList.add('justify-content-between');
-
       recipes.forEach(recipe => {
         const template = new RecipeCard(recipe);
         this._$wrapperRecipes.appendChild(template.createRecipeCardV1());
@@ -61,8 +57,8 @@ class DisplayRecipes {
     } else {
       this._errorMsg()
     }
-
-    //this._filters.update(filtersData);
+    
+    this._filters.update(filtersData);
   }
 
   // Recipes not found

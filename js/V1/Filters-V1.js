@@ -8,8 +8,9 @@ class Filters extends StringUtils {
 
 
     update(filtersData) {
-        this._$wrapperFiltersList.forEach($wrapperFilter => {
-            const filterType = $wrapperFilter.id.split("-").shift();
+        this._$wrapperFiltersList.forEach($wrapper => {
+            const filterType = $wrapper.id.split("-").shift();
+            const $wrapperFilter = $wrapper.querySelector(`#${filterType}`)
 
             this._clearFilterAndReset(filtersData[filterType], $wrapperFilter, filterType)
             this._clearInput($wrapperFilter)
@@ -33,11 +34,11 @@ class Filters extends StringUtils {
 
     _handleFilterClick(filterTemplate, template) {
         const tagTxt = template.textContent;
-        const $wrapper = filterTemplate.createTagCard(tagTxt);
+        const $wrapper = filterTemplate.createTagCardV1(tagTxt);
 
         this._searchRecipes.searchByFilter(filterTemplate.filterType, tagTxt);
 
-        const btnClose = $wrapper.querySelector('button');
+        const btnClose = $wrapper.querySelector('i');
         btnClose.addEventListener('click', () => {
             $wrapper.remove();
             this._searchRecipes.removeFilter(tagTxt);
@@ -49,14 +50,19 @@ class Filters extends StringUtils {
     _clearFilterAndReset(filterData, $wrapperFilter, filterType) {
         $wrapperFilter.innerHTML = "";
 
-        filterData.forEach(filter => {
-            const filterTemplate = new FilterTemplate(filterType, filter);
+        if (filterData.length < 1) {
+            $wrapperFilter.innerHTML = "Aucun filtre disponible"
+        } else {
+            filterData.forEach(filter => {
+                const filterTemplate = new FilterTemplate(filterType, filter);
 
-            const template = filterTemplate.createFilterV1();
-            template.addEventListener('click', () => this._handleFilterClick(filterTemplate, template));
+                const template = filterTemplate.createFilterV1();
+                template.addEventListener('click', () => this._handleFilterClick(filterTemplate, template));
 
-            $wrapperFilter.appendChild(template);
-        });
+                $wrapperFilter.appendChild(template);
+            });
+        }
+
     }
 
     _filterAndDisplayMatchingValues(searchValue, filterData, $wrapperFilter, filterType) {
@@ -67,7 +73,7 @@ class Filters extends StringUtils {
 
         $wrapperFilter.innerHTML = "";
         if (matchingValues.length > 0) {
-           this._clearFilterAndReset(matchingValues, $wrapperFilter, filterType)
+            this._clearFilterAndReset(matchingValues, $wrapperFilter, filterType)
         } else {
             $wrapperFilter.innerHTML = "Aucune valeur trouvée";
         }

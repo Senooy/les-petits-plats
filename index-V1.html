@@ -15,7 +15,7 @@
     <title>Les petits plats</title>
 </head>
 
-<body class="font-lato">
+<body>
     <header role="banner" class="container text-center my-5">
         <svg width="52" height="47" viewBox="0 0 52 47" fill="none" xmlns="http://www.w3.org/2000/svg"
             class="header__logo">
@@ -27,7 +27,7 @@
         <h1 class="fw-bold">Les petits plats</h1>
 
         <!-- search bar -->
-        <div class=" input-group bg-primary-V1 rounded p-2 mt-4 text-white">
+        <div class=" input-group bg-primary rounded p-2 mt-4 text-white">
             <input class="form-control bg-transparent border-0 rounded shadow-none color-place-holder-black"
                 type="search" placeholder="Rechercher un recette, un ingrédient..." id="main-search" name="q">
 
@@ -44,21 +44,28 @@
 
         <section id="filters">
             <!-- tags -->
-            <div id="tags"></div>
+            <div id="tags" class="row row-cols-auto gap-5">
+                <div class="rounded-2 bg-ustensils p-2 text-white row " style="height: 2rem; width: auto;">
+                    <p class="col-10 m-0 fs-14">citron pressé de la ferme</p>
+                    <i class="col-2 fa-regular fa-circle-xmark fs-18 text-end"></i>
+                </div>
+            </div>
 
 
 
             <!-- Filters -->
             <div>
-                <div class="row row-cols-6 my-5">
-                    <div id="ingredients-filter">
-                        <button class="btn btn-ingredient-V1 text-white p-3">Ingrédients</button>
+                <div class="row row-cols-auto my-5">
+                    <div id="ingredients-filter" class="z-1 position-relative">
+                        <button class="btn btn-ingredients text-white p-3">Ingrédients</button>
 
                         <!-- dropdown open -->
-                        <div id="ingredients-wrapper" class="bg-ingredient-V1 rounded-2 px-3 text-white d-none">
+                        <div id="ingredients-wrapper"
+                            class="bg-ingredients position-absolute rounded-2 px-3 text-white overflow-auto d-none"
+                            style="max-height: 24.81rem;">
                             <div class="input-group py-2">
                                 <input
-                                    class="form-control ps-0 border-0 bg-transparent shadow-none color-place-holder-white"
+                                    class="form-control ps-0 border-0 text-white bg-transparent shadow-none color-place-holder-white"
                                     type="search" id="ingredients-search-input" placeholder="Rechercher un ingrédient">
                                 <span class="input-group-append">
                                     <button class="btn text-dark pe-0" type="button">
@@ -69,11 +76,6 @@
 
                             <div class="border-0 bg-transparent w-100">
                                 <div id="ingredients" class="row row-cols-3 w-100 align-items-center">
-                                    <p>Action</p>
-                                    <p>Another action</p>
-                                    <p>Something else here</p>
-                                    <p>Another action</p>
-                                    <p>Another action</p>
                                 </div>
                             </div>
                         </div>
@@ -82,14 +84,16 @@
 
 
 
-                    <div id="appliances-filter">
-                        <button class="btn btn-appliance-V1 text-white p-3">Appareils</button>
+                    <div id="appliances-filter" class="z-1 position-relative">
+                        <button class="btn btn-appliances text-white p-3">Appareils</button>
 
                         <!-- dropdown open -->
-                        <div id="appliances-wrapper" class="bg-appliance-V1 rounded-2 px-3 text-white d-none">
+                        <div id="appliances-wrapper"
+                            class="bg-appliances position-absolute rounded-2 px-3 text-white overflow-auto d-none"
+                            style="max-height: 24.81rem;">
                             <div class="input-group py-2">
                                 <input
-                                    class="form-control ps-0 border-0 bg-transparent shadow-none color-place-holder-white"
+                                    class="form-control ps-0 border-0 text-white bg-transparent shadow-none color-place-holder-white"
                                     type="search" id="ingredients-search-input" placeholder="Rechercher un appareil">
                                 <span class="input-group-append">
                                     <button class="btn text-white pe-0" type="button">
@@ -100,27 +104,23 @@
 
                             <div class="border-0 bg-transparent w-100">
                                 <div id="appliances" class="row row-cols-3 w-100 align-items-center">
-                                    <p class="col">Action</p>
-                                    <p class="col">Another action</p>
-                                    <p class="col">Something else here</p>
-                                    <p class="col">Another action</p>
-                                    <p class="col">Another action</p>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- /////////////// -->
 
 
-
-                    <div id="ustensils-filter">
-                        <button class="btn btn-ustensil-V1 text-white p-3">Ustensiles</button>
+                    <div id="ustensils-filter" class="z-1 position-relative">
+                        <button class="btn btn-ustensils text-white p-3">Ustensiles</button>
 
                         <!-- dropdown open -->
-                        <div id="ustensils-wrapper" class="bg-ustensil-V1 rounded-2 px-3 text-white d-none">
+                        <div id="ustensils-wrapper"
+                            class="bg-ustensils position-absolute rounded-2 px-3 text-white overflow-auto d-none"
+                            style="max-height: 24.81rem;">
                             <div class="input-group py-2">
                                 <input
-                                    class="form-control ps-0 border-0 bg-transparent shadow-none color-place-holder-white"
+                                    class="form-control ps-0 border-0 text-white bg-transparent shadow-none color-place-holder-white"
                                     type="search" id="ingredients-search-input" placeholder="Rechercher un ustensiles">
                                 <span class="input-group-append">
                                     <button class="btn text-white pe-0" type="button">
@@ -131,11 +131,6 @@
 
                             <div class="border-0 bg-transparent w-100">
                                 <div id="ustensils" class="row row-cols-3 w-100 align-items-center">
-                                    <p class="col">Action</p>
-                                    <p class="col">Another action</p>
-                                    <p class="col">Something else here</p>
-                                    <p class="col">Another action</p>
-                                    <p class="col">Another action</p>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +145,7 @@
 
 
         <!-- recipes -->
-        <section id="recipes" class="row row-cols-auto gap-5">
+        <section id="recipes" class="row row-cols-auto gap-5 position-relative">
         </section>
 
     </main>
@@ -165,20 +160,19 @@
     <script src="js/models/Ingredient.js"></script>
     <script src="js/models/Recipe.js"></script>
 
+    <!-- V1 -->
+    <script src="js/V1/Toggle.js"></script>
+    <script src="js/V1/Filters-V1.js"></script>
+
     <!-- Templates -->
     <script src="js/templates/RecipeCard.js"></script>
     <script src="js/templates/FilterTemplate.js"></script>
     <script src="js/templates/DisplayRecipes.js"></script>
 
-    <!-- V1 -->
-    <script src="js/V1/Toggle.js"></script>
-    <script src="js/V1/Filters-V1.js"></script>
-
     <!-- Utils -->
     <script src="js/utils/RecipesIndex.js"></script>
     <script src="js/utils/SearchRecipes.js"></script>
-    
-    
+
 
     <!-- Entries -->
     <script src="js/app-V1.js"></script>

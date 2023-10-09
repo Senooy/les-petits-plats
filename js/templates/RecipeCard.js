@@ -20,9 +20,9 @@ class RecipeCard {
 
         const card = `
                 <!-- photo plat -->
-                <div class="card-img-top bg-secondary-V1" style="height: 11.13rem;"></div>
+                <div class="card-img-top bg-secondary" style="height: 11.13rem;"></div>
 
-                <div class="card-body bg-primary-V1">
+                <div class="card-body bg-primary">
                     <div class="row pt-2 mb-2">
                         <div class="col-8">
                             <h2 class="card-title fs-18 fw-light">${this._recipe.name}</h2>

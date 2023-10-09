@@ -36,6 +36,22 @@ class FilterTemplate {
         return $wrapper;
     }
 
+    createTagCardV1() {
+        const $wrapper = document.createElement('div')
+        $wrapper.classList.add('rounded-2')
+        $wrapper.classList.add(`bg-${this._filterType}`)
+        $wrapper.classList.add('p-2')
+        $wrapper.classList.add('text-white')
+        $wrapper.classList.add('row')
+        $wrapper.style = "height: 2.32rem; width: auto;"
+
+        $wrapper.innerHTML = `
+            <p class="col-10 m-0 fs-14">${this._data}</p>
+            <i class="col-2 fa-regular fa-circle-xmark"></i>
+        `
+        return $wrapper;
+    }
+
     get filterType() {
         return this._filterType
     }
