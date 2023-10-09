@@ -35,10 +35,12 @@ class Filters extends StringUtils {
     _handleFilterClick(filterTemplate, template) {
         const tagTxt = template.textContent;
         const $wrapper = filterTemplate.createTagCardV1(tagTxt);
+        console.log($wrapper);
 
         this._searchRecipes.searchByFilter(filterTemplate.filterType, tagTxt);
 
         const btnClose = $wrapper.querySelector('i');
+        console.log(btnClose);
         btnClose.addEventListener('click', () => {
             $wrapper.remove();
             this._searchRecipes.removeFilter(tagTxt);

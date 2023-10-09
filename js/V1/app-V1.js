@@ -19,7 +19,7 @@ class App {
     recipesIndex.init(recipes)
 
     // init filters
-    const toggleFilters = new ToggleFilter(this.filtersListsIds)
+    const toggleFilters = new ToggleFilters(this.filtersListsIds)
     toggleFilters.addEvent()
 
     // Search system

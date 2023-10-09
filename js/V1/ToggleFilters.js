@@ -1,4 +1,4 @@
-class ToggleFilter {
+class ToggleFilters {
     constructor(filtersListId) {
         this._$wrappersFiltersList = this._getWrappers(filtersListId)
         this._active = false
