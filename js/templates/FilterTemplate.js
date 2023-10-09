@@ -7,6 +7,8 @@ class FilterTemplate {
     createFilter() {
         const $wrapper = document.createElement('li');
         $wrapper.classList.add('list-group-item');
+        $wrapper.classList.add('py-2');
+        $wrapper.classList.add('px-1');
         $wrapper.innerText = this._data;
 
         return $wrapper
@@ -29,5 +31,9 @@ class FilterTemplate {
 
     get filterType () {
         return this._filterType
+    }
+
+    get name() {
+        return this._data
     }
 }

@@ -38,4 +38,9 @@ $font-sizes: (
   44: 44px,
 );
 
+.dropdown-menu > li > ul > li:hover {
+  background-image: none;
+  background-color: $primary
+}
+
 @import "node_modules/bootstrap/scss/bootstrap.scss";
